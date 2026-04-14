@@ -5,7 +5,7 @@ using UnityEngine;
 public class Locator : MonoBehaviour
 {
     public static Locator Instance { get; private set; }
-    public Player player { get; private set; }
+    //public Player player { get; private set; }
     public GameController gameController { get; private set; }
 
     // Start is called before the first frame update
