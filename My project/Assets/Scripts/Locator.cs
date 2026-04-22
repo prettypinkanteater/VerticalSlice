@@ -16,10 +16,11 @@ public class Locator : MonoBehaviour
         }
 
         Instance = this;
+        dialogueUI = GameObject.Find("DialogueUI").GetComponent<DialogueUI>();
     }
     void Start()
     {
-        dialogueUI = GameObject.Find("DialogueUI").GetComponent<DialogueUI>();
+        
     }
 
     // Update is called once per frame

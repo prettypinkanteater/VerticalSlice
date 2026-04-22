@@ -16,4 +16,5 @@ MonoBehaviour:
   _lines:
   - please.. help me
   - make haste, i had to run and he is bound to be looking for me
-  _nextNode: []
+  _nextNode:
+  - {fileID: 11400000, guid: 909413b26748ebd449fece1421fb6468, type: 2}

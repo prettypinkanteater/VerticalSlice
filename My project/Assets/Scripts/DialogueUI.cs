@@ -6,6 +6,7 @@ using UnityEngine;
 public class DialogueUI : MonoBehaviour
 {
     [SerializeField] public TextMeshProUGUI _dialogueText;
+    [SerializeField] public TextMeshProUGUI _characterName;
 
     void Start()
     {
@@ -21,5 +22,11 @@ public class DialogueUI : MonoBehaviour
     public void updateDialogueText(string line)
     {
         _dialogueText.text = line;
+
+    }
+
+    public void updateCharacterName(string line)
+    {
+        _characterName.text = line;
     }
 }
