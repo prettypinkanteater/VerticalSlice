@@ -151,8 +151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c1645fc05157742a9025dd835a8fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentNode: {fileID: 0}
   _startingNode: {fileID: 11400000, guid: db077f98364b58943acd3f5591dd92dc, type: 2}
   _dialogueUI: {fileID: 1868230137}
+  _examTime: 0
 --- !u!4 &46887206
 Transform:
   m_ObjectHideFlags: 0
@@ -163,6 +165,72 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 434.51627, y: 238.46814, z: 105.185745}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &147443989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 147443992}
+  - component: {fileID: 147443991}
+  - component: {fileID: 147443990}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &147443990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147443989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe58df89b5b74a97a123b5ed2b70422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
+    _objectReferences:
+    - {fileID: 11400000, guid: 4df3b188a8ba22e4789ec1858bf2ab73, type: 2}
+--- !u!114 &147443991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147443989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"dialogueAdvancer","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"DialogueAdvancer,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _objectReferences:
+    - {fileID: 892922361}
+--- !u!4 &147443992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147443989}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.3216703, y: -1.336901, z: -3.8687375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -570,7 +638,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"_examTime","value":{"$content":false,"$type":"System.Boolean"},"typeHandle":{"Identification":"System.Boolean,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
 --- !u!114 &892922360
 MonoBehaviour:
@@ -614,8 +683,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c1645fc05157742a9025dd835a8fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentNode: {fileID: 0}
   _startingNode: {fileID: 11400000, guid: db077f98364b58943acd3f5591dd92dc, type: 2}
   _dialogueUI: {fileID: 1868230137}
+  _examTime: 0
 --- !u!1001 &936114105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1637,7 +1708,6 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1316066846}
   - {fileID: 1340390884}
   - {fileID: 1729532686}
   - {fileID: 1590146529}
@@ -1647,7 +1717,9 @@ SceneRoots:
   - {fileID: 1739019742}
   - {fileID: 1362673707}
   - {fileID: 678557081}
-  - {fileID: 1016414458}
   - {fileID: 46887206}
   - {fileID: 892922357}
+  - {fileID: 147443992}
   - {fileID: 392329354}
+  - {fileID: 1016414458}
+  - {fileID: 1316066846}

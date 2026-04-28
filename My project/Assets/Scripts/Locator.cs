@@ -7,6 +7,8 @@ public class Locator : MonoBehaviour
     public static Locator Instance { get; private set; }
     public DialogueUI dialogueUI { get; private set; }
 
+    public DialogueAdvancer dialogueAdvancer { get; private set; }
+
     private void Awake()
     {
         if(Instance != null && Instance != this)
@@ -17,6 +19,7 @@ public class Locator : MonoBehaviour
 
         Instance = this;
         dialogueUI = GameObject.Find("DialogueUI").GetComponent<DialogueUI>();
+        dialogueAdvancer = GameObject.Find("DialogueController").GetComponent<DialogueAdvancer>();
     }
     void Start()
     {

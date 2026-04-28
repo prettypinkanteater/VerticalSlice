@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e66c6366d904e98bc83428217d4fd7, type: 3}
+  m_Name: dialogue input graph
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"graph":{"variables":{"Kind":"Flow","collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":null,"summary":null,"pan":{"x":0.0,"y":150.0},"zoom":1.0,"elements":[{"coroutine":false,"defaultValues":{},"position":{"x":-594.0,"y":165.0},"guid":"7c51cddf-7d8d-4c5e-bb36-fd1daf0d1170","$version":"A","$type":"Unity.VisualScripting.Update"},{"coroutine":false,"defaultValues":{"key":{"$content":"Space","$type":"UnityEngine.KeyCode"},"action":{"$content":"Down","$type":"Unity.VisualScripting.PressState"}},"position":{"x":-594.0,"y":307.0},"guid":"e14ced62-9613-4d38-b410-0577f85b7bee","$version":"A","$type":"Unity.VisualScripting.OnKeyboardInput","$id":"11"},{"chainable":false,"parameterNames":[],"member":{"name":"AdvanceDialogue","parameterTypes":[],"targetType":"DialogueAdvancer","targetTypeName":"DialogueAdvancer","$version":"A"},"defaultValues":{"target":null},"position":{"x":-384.0,"y":305.0},"guid":"ac575cac-d547-444d-a314-7eb48e55279e","$version":"A","$type":"Unity.VisualScripting.InvokeMember","$id":"13"},{"sourceUnit":{"$ref":"11"},"sourceKey":"trigger","destinationUnit":{"$ref":"13"},"destinationKey":"enter","guid":"293a850d-ab6a-46b1-a72d-ede99984a285","$type":"Unity.VisualScripting.ControlConnection"}],"$version":"A"}}'
+    _objectReferences: []

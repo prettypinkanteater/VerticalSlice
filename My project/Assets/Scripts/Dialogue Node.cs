@@ -9,6 +9,7 @@ public class DialogueNode : ScriptableObject
     public string npcTalking;
     public string[] _lines;
     public DialogueNode[] _nextNode;
+    public bool examNext;
     // Start is called before the first frame update
     void Start()
     {

@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcTalking: Galatea
   _lines:
-  - please.. help me
-  - make haste, i had to run and he is bound to be looking for me
+  - please..
+  - help me...
+  - make haste, i ran, but he is bound to be looking for me.
   _nextNode:
   - {fileID: 11400000, guid: 909413b26748ebd449fece1421fb6468, type: 2}
+  examNext: 0
