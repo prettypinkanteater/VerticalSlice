@@ -11,4 +11,4 @@ Milestone 4 Devlog goes here.
 Final Devlog goes here.
 ## Open-source assets
 - [Abandoned Hospital Assets](https://calv182.itch.io/abandoned-hospital-assetpack)
-- 
+- <img width="1226" height="920" alt="image" src="https://github.com/user-attachments/assets/e68c39f9-0d30-401e-a476-9a6662f1cbfe" />
