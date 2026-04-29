@@ -11,9 +11,14 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] public GameObject _dialoguePanel;
     [SerializeField] public GameObject _namePanel;
 
+    [SerializeField] public GameObject _turnButton;
+    [SerializeField] public GameObject _endButton;
+
     void Start()
     {
         _startExamButtonUI.SetActive(false);
+        _turnButton.SetActive(false);
+        _endButton.SetActive(false);
     }
 
     // Update is called once per frame

@@ -19,6 +19,11 @@ MonoBehaviour:
   - this is for the safety of everyone here.
   - but you're lucky, the director has only made the searches mandatory up until
     the bottom of the shoulder blades.
+  - once we're in the examination room, please remove all articles (jewelry, clothing,
+    etc.) within that area.
+  - (the director is looking to distinguish Figures from normal human patients)
+  - (Figures have "rendering anomolies", mutations of normal flesh)
+  - (wonder what that looks like...)
   _nextNode:
   - {fileID: 11400000, guid: 7e7fa64393fc51a4fb8b2b7ff58e8ad0, type: 2}
   examNext: 0

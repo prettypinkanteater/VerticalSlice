@@ -11,6 +11,8 @@ public class Locator : MonoBehaviour
 
     public GameController gameController { get; private set; }
 
+    public ExamStatsUI examStatsUI { get; private set; }
+
     private void Awake()
     {
         if(Instance != null && Instance != this)
@@ -21,6 +23,7 @@ public class Locator : MonoBehaviour
 
         Instance = this;
         dialogueUI = GameObject.Find("Canvas").GetComponentInChildren<DialogueUI>();
+        examStatsUI = GameObject.Find("Canvas").GetComponentInChildren<ExamStatsUI>();
         dialogueAdvancer = GameObject.Find("DialogueController").GetComponent<DialogueAdvancer>();
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
     }

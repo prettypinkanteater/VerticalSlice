@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Galatea : Patient
 {
+    [SerializeField] GameObject _attributeCanvas;
     [SerializeField] GameObject _attribute1;
     [SerializeField] GameObject _attribute2;
     [SerializeField] DialogueNode _investigationDialogue1;
@@ -21,7 +22,10 @@ public class Galatea : Patient
     // Update is called once per frame
     void Update()
     {
-        
+        if(_turned == true)
+        {
+            _attributeCanvas.SetActive(true);
+        }
     }
 
     public override void AttributeInvestigate(GameObject NPCattribute)
@@ -34,15 +38,23 @@ public class Galatea : Patient
     }
     public override void AttributeFound(GameObject NPCattribute)
     {
-        if (_attribute1Investigated == false || _attribute2Investigated == false)
+        /*if (_attribute1Investigated == false || _attribute2Investigated == false)
         {
             AttributeInvestigate(NPCattribute);
         }
         else
         {
             base.AttributeFound(NPCattribute);
-        }
+        }*/
+
+        base.AttributeFound(NPCattribute);
             
+
+    }
+
+    public override void Turn(Sprite sprite)
+    {
+        base.Turn(sprite);
 
     }
 
