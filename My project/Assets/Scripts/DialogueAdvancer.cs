@@ -7,9 +7,9 @@ public class DialogueAdvancer : MonoBehaviour
 {
     public DialogueNode _currentNode;
     [SerializeField] private DialogueNode _startingNode;
-    private int _currentLine;
+    public int _currentLine;
     [SerializeField] private DialogueUI _dialogueUI;
-    public bool _examTime;
+    
     
     //_currentNode._examTime;
     // Start is called before the first frame update
@@ -26,9 +26,12 @@ public class DialogueAdvancer : MonoBehaviour
     {
         if (_currentNode.examNext && (_currentNode._lines.Length == _currentLine))
             {
-                _examTime = true;
+                _dialogueUI.showExamStartButton();
+                Cursor.lockState = CursorLockMode.None;
             }
     }
+
+    
 
     public void AdvanceDialogue()
     {
@@ -40,11 +43,16 @@ public class DialogueAdvancer : MonoBehaviour
         else
         {
             _currentNode = _currentNode._nextNode[0];
-            _currentLine = 1;
-            _dialogueUI.updateDialogueText(_currentNode._lines[0]);
-            _dialogueUI.updateCharacterName(_currentNode.npcTalking);
+            ResetDialogueDisplay();
             
         }
 
+    }
+
+    public void ResetDialogueDisplay()
+    {
+            _currentLine = 1;
+            _dialogueUI.updateDialogueText(_currentNode._lines[0]);
+            _dialogueUI.updateCharacterName(_currentNode.npcTalking);
     }
 }

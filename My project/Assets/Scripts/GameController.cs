@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public bool _examTime;
+    public int _attributesFound;
+    public int _maxAttributes;
+
+    private void Awake()
+    {
+        _examTime = false;
+    }
     void Start()
     {
         
@@ -15,4 +22,11 @@ public class GameController : MonoBehaviour
     {
         
     }
+
+    public void StartExam()
+    {
+        _attributesFound = 0;
+        _examTime = true;
+    }
+
 }
