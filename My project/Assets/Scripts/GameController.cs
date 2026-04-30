@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class GameController : MonoBehaviour
 {
     public bool _examTime;
     public int _attributesFound;
     public int _maxAttributes;
+    private PlayableDirector _timeline;
 
     private void Awake()
     {
