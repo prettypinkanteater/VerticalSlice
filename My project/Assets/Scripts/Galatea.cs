@@ -20,7 +20,11 @@ public class Galatea : Patient
     {
         _npcIdentity = Identity.Figure;
         _attributes = 2;
+        _patientName = "Galatea";
+        Locator.Instance.gameController._currentPatient = _patientName;
         Locator.Instance.gameController._maxAttributes = _attributes;
+        Locator.Instance.gameController._currentPatientObject = gameObject;
+        
     }
 
     // Update is called once per frame

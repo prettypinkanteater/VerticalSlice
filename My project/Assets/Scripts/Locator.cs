@@ -5,7 +5,7 @@ using UnityEngine;
 public class Locator : MonoBehaviour
 {
     public static Locator Instance { get; private set; }
-    public DialogueUI dialogueUI { get; private set; }
+    public UI _ui { get; private set; }
 
     public DialogueAdvancer dialogueAdvancer { get; private set; }
 
@@ -22,7 +22,7 @@ public class Locator : MonoBehaviour
         }
 
         Instance = this;
-        dialogueUI = GameObject.Find("Canvas").GetComponentInChildren<DialogueUI>();
+        _ui = GameObject.Find("Canvas").GetComponentInChildren<UI>();
         examStatsUI = GameObject.Find("Canvas").GetComponentInChildren<ExamStatsUI>();
         dialogueAdvancer = GameObject.Find("DialogueController").GetComponent<DialogueAdvancer>();
         gameController = GameObject.Find("GameController").GetComponent<GameController>();

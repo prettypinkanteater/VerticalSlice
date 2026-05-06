@@ -9,7 +9,8 @@ public enum Identity {
 
 public abstract class Patient : MonoBehaviour
 {
-    protected Identity _npcIdentity;
+    public string _patientName;
+    public Identity _npcIdentity { get; protected set; }
     protected int _attributes;
     protected bool _turned = false;
     
@@ -32,7 +33,7 @@ public abstract class Patient : MonoBehaviour
 
     public virtual void AttributeInvestigate(GameObject attribute)
     {
-        Locator.Instance.dialogueUI.InvestigationDefense();
+        Locator.Instance._ui.InvestigationDefense();
     }
     public virtual void AttributeFound(GameObject attribute)
     {

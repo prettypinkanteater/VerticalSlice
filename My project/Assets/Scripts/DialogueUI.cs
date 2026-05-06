@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DialogueUI : MonoBehaviour
+public class UI : MonoBehaviour
 {
     [SerializeField] public TextMeshProUGUI _dialogueText;
     [SerializeField] public TextMeshProUGUI _characterName;
@@ -14,11 +14,17 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] public GameObject _turnButton;
     [SerializeField] public GameObject _endButton;
 
+    [SerializeField] public GameObject _examWindow;
+
+    [SerializeField] public GameObject _identitySelectedText;
+
     void Start()
     {
         _startExamButtonUI.SetActive(false);
         _turnButton.SetActive(false);
         _endButton.SetActive(false);
+        _examWindow.SetActive(false);
+        _identitySelectedText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,5 +56,12 @@ public class DialogueUI : MonoBehaviour
         _namePanel.SetActive(true);
         _dialoguePanel.SetActive(true);
         _startExamButtonUI.SetActive(false);
+    }
+
+    public void showIdentificationWindow()
+    {
+        _examWindow.SetActive(true);
+        _turnButton.SetActive(false);
+        _endButton.SetActive(false);
     }
 }
