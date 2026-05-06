@@ -4151,6 +4151,7 @@ MonoBehaviour:
   _turnButton: {fileID: 425294978}
   _endButton: {fileID: 432988294}
   _examWindow: {fileID: 52915034}
+  _identitySelectedText: {fileID: 0}
 --- !u!1 &1871007171
 GameObject:
   m_ObjectHideFlags: 0
