@@ -14,7 +14,8 @@ public class GameController : MonoBehaviour
     public int _incorrectIdentifications;
     public string _currentPatient;
     public GameObject _currentPatientObject;
-    private PlayableDirector _timeline;
+
+    [SerializeField] GameObject _nailPrefab;
 
     private void Awake()
     {
@@ -28,13 +29,21 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // if statement to check if ermmmm shift finished
+        if(_currentPatient == "Galatea")
+        {
+            if((_incorrectIdentifications == 1) || _correctIdentifications == 1)
+            {
+
+            }
+        }
     }
 
     public void StartExam()
     {
         _attributesFound = 0;
         _examTime = true;
+        // Instantiate(_nailPrefab);
         Locator.Instance._ui._endButton.SetActive(true);
     }
 

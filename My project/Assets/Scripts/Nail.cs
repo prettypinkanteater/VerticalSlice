@@ -1,31 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 
 public class Nail : MonoBehaviour
 {
-    Vector3 _mousePosition;
-    void Start()
+    [SerializeField] private Canvas canvas;
+    public PlayableDirector _nailPlayableDirector;
+    public Animator _nailAnimator;
+    public bool _playing;
+
+    private void Start()
     {
-        
+        _nailPlayableDirector = GameObject.Find("NailTimeline").GetComponent<PlayableDirector>();
+        _nailAnimator = GetComponent<Animator>();
+        _nailPlayableDirector.enabled = false;
+        _nailAnimator.enabled = false;
+    }
+    private void Update()
+    {
+         
+    }
+    public void DragHandler(BaseEventData data)
+    {
+        PointerEventData pointerData = (PointerEventData)data;
+
+        Vector2 position;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            (RectTransform)canvas.transform, pointerData.position, canvas.worldCamera, out position);
+
+        transform.position = canvas.transform.TransformPoint(position);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void BeginTimeline()
     {
-        _mousePosition = Input.mousePosition;
-        _mousePosition.z = 0;
-        OnMouseOver();
-        
+        _nailPlayableDirector.Play();
+        //Cursor.lockState = CursorLockMode.Locked;
+        // THEN using timeline signal, you KILL THIS MF
     }
 
-    private void OnMouseOver()
-    {
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            transform.position = Camera.main.ScreenToWorldPoint(_mousePosition);
-        }
-    }
+
 }

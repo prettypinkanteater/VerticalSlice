@@ -51,7 +51,7 @@ public class UI : MonoBehaviour
         _startExamButtonUI.SetActive(true);
     }
 
-    public void InvestigationDefense()
+    public void investigationDefense()
     {
         _namePanel.SetActive(true);
         _dialoguePanel.SetActive(true);

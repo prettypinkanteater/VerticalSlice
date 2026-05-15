@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Galatea : Patient
 {
@@ -24,6 +26,9 @@ public class Galatea : Patient
         Locator.Instance.gameController._currentPatient = _patientName;
         Locator.Instance.gameController._maxAttributes = _attributes;
         Locator.Instance.gameController._currentPatientObject = gameObject;
+
+        _attribute1.GetComponent<BoxCollider>().enabled = false;
+        _attribute2.GetComponent<BoxCollider>().enabled = false;
         
     }
 
@@ -33,6 +38,10 @@ public class Galatea : Patient
         if(_turned == true)
         {
             _attributeCanvas.SetActive(true);
+        }
+        else
+        {
+            _attributeCanvas.SetActive(false);
         }
 
         if (Input.GetKey(KeyCode.Space))
@@ -44,55 +53,51 @@ public class Galatea : Patient
 
     public override void AttributeInvestigate(GameObject NPCattribute)
     {
-        base.AttributeInvestigate(NPCattribute);
         Locator.Instance.dialogueAdvancer._currentNode = _investigationDialogue1;
         _investigationDialogueUI.SetActive(true);
+        
+
         if(NPCattribute == _attribute1)
         {
-            _investigationDefenseText.text = "...I woke up like this.";
-            _attribute1Investigated = true;
+            if (_attribute1Investigated == true)
+            {
+                Debug.Log("nail 1");
+                AttributeFound(NPCattribute);
+                
+            }
+            else
+            {
+                Debug.Log("investigating");
+                base.AttributeInvestigate(NPCattribute);
+                _attribute1Investigated = true;
+            }
         }
         if(NPCattribute == _attribute2)
         {
-            _investigationDefenseText.text = "My jewelry is stuck to my arm.";
-            _attribute2Investigated = true;
+            if(_attribute2Investigated == true)
+            {
+                Debug.Log("nail 2");
+                AttributeFound(NPCattribute);
+                
+            }
+            else
+            {
+                Debug.Log("investigating 2");
+                base.AttributeInvestigate(NPCattribute);
+                _attribute2Investigated = true;
+            }
         }
-        
-        //work on making investigation dialogue appear
-
+        // space is still getting read :(
     }
     public override void AttributeFound(GameObject NPCattribute)
     {
-        if (_attribute1Investigated == false)
-        {
-            AttributeInvestigate(NPCattribute);
-        }
-        if(_attribute2Investigated == false)
-        {
-            AttributeInvestigate(NPCattribute);
-        }
-
-        if(_attribute2Investigated == true || _attribute1Investigated == true)
-        {
-            base.AttributeFound(NPCattribute);
-        }
-        
-
-        // if either attribute is investigated, if the attribute is number 1
-        
-            
-     
-        
-
-        //base.AttributeFound(NPCattribute);
-            
-
+        Debug.Log("found");
+        base.AttributeFound(NPCattribute);
     }
 
-    public override void Turn(Sprite sprite)
+    public override void Turn()
     {
-        base.Turn(sprite);
-
+        base.Turn();
     }
 
 }
