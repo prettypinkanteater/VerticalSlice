@@ -30,7 +30,9 @@ I did some of this before this milestone so I am partially reflecting what I did
 The task steps break-down activity & quiz both helped me build a feature for this Milestone because I was very specific about the components of each step. Though, I did not really reference it and mostly referenced my notes/documentation which were essentially the same thing just less contextualized. To be honest, I would not really improve anything in my break-downs to be more helpful because I overthink and try to specify in a heirarchy as much as I can.
 ### 3. 
 I called a C# method from the GameController script in my GameState Graph so that the logic assessing shift quality runs once the state is Shift Assessment. This bridge exists
-mostly because it is easier for me to access and compare variables.
+mostly because it is easier for me to access and compare variables. 
+<img width="1361" height="512" alt="image" src="https://github.com/user-attachments/assets/17b26ad3-d5be-456b-ad85-43421ee73288" />
+
 ### 4.
 I used Timelines for the nail rotation and position animation that occurs after the nail trigger collides with an investigated attribute.
 It also uses a Signal Emitter to tell the gameController when the animation has finished to update the amount of attributes marked.
