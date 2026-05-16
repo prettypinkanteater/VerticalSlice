@@ -37,7 +37,7 @@ Lowkey a massive graph so hard to balance visibility and breadth of shot.
 
 ### 4.
 I used Timelines for the nail rotation and position animation that occurs after the nail trigger collides with an investigated attribute.
-It also uses a Signal Emitter to tell the gameController when the animation has finished to update the amount of attributes marked.
+It also uses a Signal Emitter to tell the gameController when the animation has finished to update the amount of attributes marked. Currently, I have not implemented the nail resetting to a more suitable position after appearing again.
 
 ## Milestone 3 Devlog
 Milestone 3 Devlog goes here.
