@@ -14,10 +14,13 @@ public class Nail : MonoBehaviour
     public Animator _nailAnimator;
     public bool _playing;
 
+    public GameObject _attributeTouching;
+
     private void Start()
     {
         _nailPlayableDirector = GameObject.Find("NailTimeline").GetComponent<PlayableDirector>();
         _nailAnimator = GetComponent<Animator>();
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         _nailPlayableDirector.enabled = false;
         _nailAnimator.enabled = false;
     }
@@ -38,10 +41,13 @@ public class Nail : MonoBehaviour
 
     public void BeginTimeline()
     {
+        _nailPlayableDirector.enabled = true;
+        _nailAnimator.enabled = true;
         _nailPlayableDirector.Play();
-        //Cursor.lockState = CursorLockMode.Locked;
-        // THEN using timeline signal, you KILL THIS MF
     }
 
-
+    public void AttributeIdentification()
+    {
+        GameObject.Find("Galatea").GetComponent<Galatea>().AttributeFound(_attributeTouching);
+    }
 }

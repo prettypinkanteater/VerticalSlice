@@ -87,7 +87,7 @@ public class Galatea : Patient
                 _attribute2Investigated = true;
             }
         }
-        // space is still getting read :(
+        // investigation  2 being triggered
     }
     public override void AttributeFound(GameObject NPCattribute)
     {

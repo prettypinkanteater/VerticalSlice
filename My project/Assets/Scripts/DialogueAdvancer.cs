@@ -44,7 +44,6 @@ public class DialogueAdvancer : MonoBehaviour
         {
             _currentNode = _currentNode._nextNode[0];
             ResetDialogueDisplay();
-            
         }
 
     }

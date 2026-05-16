@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Principal;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -16,6 +17,7 @@ public class GameController : MonoBehaviour
     public GameObject _currentPatientObject;
 
     [SerializeField] GameObject _nailPrefab;
+    public GameObject _currentNail;
 
     private void Awake()
     {
@@ -23,7 +25,7 @@ public class GameController : MonoBehaviour
     }
     void Start()
     {
-    
+      
     }
 
     // Update is called once per frame
@@ -67,4 +69,18 @@ public class GameController : MonoBehaviour
             ; break;
         }
     }
+
+    public void spawnNail()
+    {
+        Nail nailScript = _currentNail.GetComponent<Nail>();
+        _currentNail.SetActive(true);
+        nailScript._nailAnimator.enabled = false;
+        nailScript._nailPlayableDirector.enabled = false;
+    }
+
+    public void killNail()
+    {
+        _currentNail.SetActive(false);
+    }
+
 }

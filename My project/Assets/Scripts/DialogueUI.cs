@@ -18,8 +18,11 @@ public class UI : MonoBehaviour
 
     [SerializeField] public GameObject _identitySelectedText;
 
+    [SerializeField] public GameObject _nailPileButton;
+
     void Start()
     {
+        _nailPileButton.SetActive(false);
         _startExamButtonUI.SetActive(false);
         _turnButton.SetActive(false);
         _endButton.SetActive(false);

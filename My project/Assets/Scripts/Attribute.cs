@@ -8,8 +8,7 @@ public class Attribute : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("touching touching omg");
-        other.GetComponent<Nail>()._nailPlayableDirector.enabled = true;
-        other.GetComponent<Animator>().enabled = true;
+        other.GetComponent<Nail>()._attributeTouching = gameObject;
         other.GetComponent<Nail>().BeginTimeline();
     }
 }
