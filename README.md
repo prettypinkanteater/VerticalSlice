@@ -31,7 +31,9 @@ The task steps break-down activity & quiz both helped me build a feature for thi
 ### 3. 
 I called a C# method from the GameController script in my GameState Graph so that the logic assessing shift quality runs once the state is Shift Assessment. This bridge exists
 mostly because it is easier for me to access and compare variables. 
-<img width="1361" height="512" alt="image" src="https://github.com/user-attachments/assets/17b26ad3-d5be-456b-ad85-43421ee73288" />
+Lowkey a massive graph so hard to balance visibility and breadth of shot.
+<img width="1058" height="817" alt="image" src="https://github.com/user-attachments/assets/e7c5dd36-5a64-4dcf-a3c7-7d5214ac5c49" />
+
 
 ### 4.
 I used Timelines for the nail rotation and position animation that occurs after the nail trigger collides with an investigated attribute.
