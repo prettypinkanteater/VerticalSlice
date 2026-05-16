@@ -20,6 +20,16 @@ public class UI : MonoBehaviour
 
     [SerializeField] public GameObject _nailPileButton;
 
+    [SerializeField] public GameObject _shiftQualityText;
+
+    [SerializeField] public DialogueNode _attribute1DefenseNode;
+    [SerializeField] public DialogueNode _attribute2DefenseNode;
+
+    [SerializeField] public GameObject _attribute1;
+    [SerializeField] public GameObject _attribute2;
+
+    [SerializeField] public GameObject _investigationDefenseText;
+
     void Start()
     {
         _nailPileButton.SetActive(false);
@@ -28,6 +38,8 @@ public class UI : MonoBehaviour
         _endButton.SetActive(false);
         _examWindow.SetActive(false);
         _identitySelectedText.SetActive(false);
+        _shiftQualityText.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -54,11 +66,18 @@ public class UI : MonoBehaviour
         _startExamButtonUI.SetActive(true);
     }
 
-    public void investigationDefense()
+    public void investigationDefense(GameObject attribute)
     {
-        _namePanel.SetActive(true);
+        if(attribute == _attribute1)
+        {
+            _investigationDefenseText.GetComponent<TextMeshProUGUI>().text = _attribute1DefenseNode._lines[0];
+        }
+        else if(attribute == _attribute2)
+        {
+            _investigationDefenseText.GetComponent<TextMeshProUGUI>().text = _attribute2DefenseNode._lines[0];
+        }
+
         _dialoguePanel.SetActive(true);
-        _startExamButtonUI.SetActive(false);
     }
 
     public void showIdentificationWindow()

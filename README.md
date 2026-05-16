@@ -26,6 +26,15 @@ I did some of this before this milestone so I am partially reflecting what I did
 	2. Make it so that the UI ONLY appears once the shift has ENDED
 	3. Within the method comparing examination stats, update the shift quality text as fit
 
+### 2. 
+The task steps break-down activity & quiz both helped me build a feature for this Milestone because I was very specific about the components of each step. Though, I did not really reference it and mostly referenced my notes/documentation which were essentially the same thing just less contextualized. To be honest, I would not really improve anything in my break-downs to be more helpful because I overthink and try to specify in a heirarchy as much as I can.
+### 3. 
+I called a C# method from the GameController script in my GameState Graph so that the logic assessing shift quality runs once the state is Shift Assessment. This bridge exists
+mostly because it is easier for me to access and compare variables.
+### 4.
+I used Timelines for the nail rotation and position animation that occurs after the nail trigger collides with an investigated attribute.
+It also uses a Signal Emitter to tell the gameController when the animation has finished to update the amount of attributes marked.
+
 ## Milestone 3 Devlog
 Milestone 3 Devlog goes here.
 ## Milestone 4 Devlog

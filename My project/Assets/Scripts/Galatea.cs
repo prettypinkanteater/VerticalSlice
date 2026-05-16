@@ -53,7 +53,6 @@ public class Galatea : Patient
 
     public override void AttributeInvestigate(GameObject NPCattribute)
     {
-        Locator.Instance.dialogueAdvancer._currentNode = _investigationDialogue1;
         _investigationDialogueUI.SetActive(true);
         
 

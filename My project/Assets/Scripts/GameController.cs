@@ -6,22 +6,42 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 
+public enum ShiftQuality
+{
+    Excellent, Mediocre, Poor
+}
 public class GameController : MonoBehaviour
 {
+    public ShiftQuality shiftQuality;
     public bool _examTime;
-    public int _attributesFound;
-    public int _maxAttributes;
-    public int _correctIdentifications;
-    public int _incorrectIdentifications;
+
+    // attributes marked 
+    public float _attributesFound;
+    // total attributes existing
+    public float _maxAttributes;
+
+    public float _humanIdentifications;
+    public float _figureIdentificaitons;
+
+    public float _totalFigures = 1;
+    public float _totalHumans = 0;
+
+    public float _incorrectIdentifications;
+    //public bool _allAttributesFound;
     public string _currentPatient;
     public GameObject _currentPatientObject;
 
     [SerializeField] GameObject _nailPrefab;
     public GameObject _currentNail;
 
+    public bool _examEnded;
+
     private void Awake()
     {
         _examTime = false;
+        _examEnded = false;
+        _totalHumans = 0;
+        _totalFigures = 1;
     }
     void Start()
     {
@@ -31,14 +51,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if statement to check if ermmmm shift finished
-        if(_currentPatient == "Galatea")
-        {
-            if((_incorrectIdentifications == 1) || _correctIdentifications == 1)
-            {
 
-            }
-        }
     }
 
     public void StartExam()
@@ -56,16 +69,14 @@ public class GameController : MonoBehaviour
             case "Galatea":
                 if (identity == _currentPatientObject.GetComponent<Galatea>()._npcIdentity.ToString())
                 {
-                    Locator.Instance._ui._identitySelectedText.GetComponent<TextMeshProUGUI>().text = "You note that Galatea is a Figure.";
-                    Locator.Instance._ui._identitySelectedText.SetActive(true);
-                    _correctIdentifications++;
+                    _figureIdentificaitons++;
                 }
                 else
                 {
-                    Locator.Instance._ui._identitySelectedText.GetComponent<TextMeshProUGUI>().text = "You note that Galatea is a human.";
-                    Locator.Instance._ui._identitySelectedText.SetActive(true);
+                    _humanIdentifications++;
                     _incorrectIdentifications++;
                 }
+                _examEnded = true;
             ; break;
         }
     }
@@ -81,6 +92,42 @@ public class GameController : MonoBehaviour
     public void killNail()
     {
         _currentNail.SetActive(false);
+    }
+
+    public void AssessShift()
+    {
+        if((_attributesFound == _maxAttributes) && ((_figureIdentificaitons == _totalFigures) && _incorrectIdentifications == 0))
+        {
+            Debug.Log("Good Job");
+            shiftQuality = ShiftQuality.Excellent;
+        }
+        else if((_attributesFound < _maxAttributes) || (_incorrectIdentifications > 0))
+        {
+            if ((_totalFigures > 1) && (_figureIdentificaitons < _totalFigures/2))
+            {
+                Debug.Log("Poor 1");
+                shiftQuality = ShiftQuality.Poor;
+            }
+            else if (_attributesFound < _maxAttributes/2)
+            {
+                // attributes found less than one half of total
+                Debug.Log("Poor 2");
+                shiftQuality = ShiftQuality.Poor;
+            }
+            else if (_incorrectIdentifications > 0)
+            {
+                Debug.Log("Poor 3");
+                shiftQuality = ShiftQuality.Poor;
+            }
+            else
+            {
+                Debug.Log("Mediocre");
+                shiftQuality = ShiftQuality.Mediocre;
+            }
+        }
+
+        Locator.Instance._ui._shiftQualityText.SetActive(true);
+        Locator.Instance._ui._shiftQualityText.GetComponent<TextMeshProUGUI>().text = "Shift Quality:" + shiftQuality.ToString();
     }
 
 }
