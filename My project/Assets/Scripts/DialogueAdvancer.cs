@@ -9,6 +9,8 @@ public class DialogueAdvancer : MonoBehaviour
     [SerializeField] private DialogueNode _startingNode;
     public int _currentLine;
     [SerializeField] private UI _dialogueUI;
+
+    public string _currentSpeaker;
     
     
     //_currentNode._examTime;
@@ -29,6 +31,8 @@ public class DialogueAdvancer : MonoBehaviour
                 _dialogueUI.showExamStartButton();
                 Cursor.lockState = CursorLockMode.None;
             }
+
+        _currentSpeaker = _currentNode.npcTalking;
     }
 
     
@@ -50,8 +54,8 @@ public class DialogueAdvancer : MonoBehaviour
 
     public void ResetDialogueDisplay()
     {
-            _currentLine = 1;
-            _dialogueUI.updateDialogueText(_currentNode._lines[0]);
-            _dialogueUI.updateCharacterName(_currentNode.npcTalking);
+        _currentLine = 1;
+        _dialogueUI.updateDialogueText(_currentNode._lines[0]);
+        _dialogueUI.updateCharacterName(_currentNode.npcTalking);
     }
 }
