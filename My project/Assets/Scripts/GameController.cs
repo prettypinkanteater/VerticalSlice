@@ -45,25 +45,33 @@ public class GameController : MonoBehaviour
     }
     void Start()
     {
-      
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(_currentPatientObject != null)
+        {
+            _currentPatientObject.GetComponent<Galatea>().GalateaFinished += UpdateCurrentPatient;
+        }
     }
 
+    public void UpdateCurrentPatient(string nextPatientName)
+    {
+        _currentPatient = nextPatientName;
+        _currentPatientObject = GameObject.Find(nextPatientName);
+
+    }
     public void StartExam()
     {
-        _attributesFound = 0;
         _examTime = true;
-        // Instantiate(_nailPrefab);
         Locator.Instance._ui._endButton.SetActive(true);
     }
 
     public void Identification(string identity)
     {
+        // at end of exam!!!!
         switch (_currentPatient)
         {
             case "Galatea":
@@ -76,9 +84,11 @@ public class GameController : MonoBehaviour
                     _humanIdentifications++;
                     _incorrectIdentifications++;
                 }
-                _examEnded = true;
-            ; break;
+                //_examEnded = true;
+            ; break; 
         }
+
+        _currentPatientObject.GetComponent<Galatea>().NextPatient();
     }
 
     public void spawnNail()
@@ -96,7 +106,8 @@ public class GameController : MonoBehaviour
 
     public void AssessShift()
     {
-        if((_attributesFound == _maxAttributes) && ((_figureIdentificaitons == _totalFigures) && _incorrectIdentifications == 0))
+
+        if ((_attributesFound == _maxAttributes) && ((_figureIdentificaitons == _totalFigures) && _incorrectIdentifications == 0))
         {
             Debug.Log("Good Job");
             shiftQuality = ShiftQuality.Excellent;
@@ -110,7 +121,6 @@ public class GameController : MonoBehaviour
             }
             else if (_attributesFound < _maxAttributes/2)
             {
-                // attributes found less than one half of total
                 Debug.Log("Poor 2");
                 shiftQuality = ShiftQuality.Poor;
             }
@@ -127,7 +137,8 @@ public class GameController : MonoBehaviour
         }
 
         Locator.Instance._ui._shiftQualityText.SetActive(true);
-        Locator.Instance._ui._shiftQualityText.GetComponent<TextMeshProUGUI>().text = "Shift Quality:" + shiftQuality.ToString();
+        Locator.Instance._ui._shiftQualityPanel.SetActive(true);
+        Locator.Instance._ui._shiftQualityText.GetComponent<TextMeshProUGUI>().text = "Shift Quality:" + " " + shiftQuality.ToString();
     }
 
 }

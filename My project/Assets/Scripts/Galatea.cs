@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Galatea : Patient
 {
+
     [SerializeField] GameObject _attributeCanvas;
     [SerializeField] GameObject _attribute1;
     [SerializeField] GameObject _attribute2;
@@ -17,12 +18,16 @@ public class Galatea : Patient
     [SerializeField] GameObject _investigationDialogueUI;
     [SerializeField] TextMeshProUGUI _investigationDefenseText;
 
-    // Start is called before the first frame update
+    // event signaling next patient....after gamecontroller updates
+    public delegate void nextPatient(string nextPatientName);
+    public event nextPatient GalateaFinished;
+
     void Start()
     {
         _npcIdentity = Identity.Figure;
         _attributes = 2;
         _patientName = "Galatea";
+
         Locator.Instance.gameController._currentPatient = _patientName;
         Locator.Instance.gameController._maxAttributes = _attributes;
         Locator.Instance.gameController._currentPatientObject = gameObject;
@@ -32,7 +37,7 @@ public class Galatea : Patient
         
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if(_turned == true)
@@ -86,7 +91,7 @@ public class Galatea : Patient
                 _attribute2Investigated = true;
             }
         }
-        // investigation  2 being triggered
+
     }
     public override void AttributeFound(GameObject NPCattribute)
     {
@@ -97,6 +102,12 @@ public class Galatea : Patient
     public override void Turn()
     {
         base.Turn();
+    }
+
+    public override void NextPatient()
+    {
+        GalateaFinished.Invoke("Gary");
+        base.NextPatient();
     }
 
 }

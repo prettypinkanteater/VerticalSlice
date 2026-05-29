@@ -21,6 +21,7 @@ public class UI : MonoBehaviour
     [SerializeField] public GameObject _nailPileButton;
 
     [SerializeField] public GameObject _shiftQualityText;
+    [SerializeField] public GameObject _shiftQualityPanel;
 
     [SerializeField] public DialogueNode _attribute1DefenseNode;
     [SerializeField] public DialogueNode _attribute2DefenseNode;
@@ -39,6 +40,7 @@ public class UI : MonoBehaviour
         _examWindow.SetActive(false);
         _identitySelectedText.SetActive(false);
         _shiftQualityText.SetActive(false);
+        _shiftQualityPanel.SetActive(false);
         
     }
 

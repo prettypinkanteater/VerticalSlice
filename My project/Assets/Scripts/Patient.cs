@@ -67,4 +67,9 @@ public abstract class Patient : MonoBehaviour
         // implement attribute fixes to second one.
     }
 
+    public virtual void NextPatient()
+    {
+        gameObject.SetActive(false);
+    }
+
 }
