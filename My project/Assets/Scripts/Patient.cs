@@ -12,12 +12,10 @@ public abstract class Patient : MonoBehaviour
 {
     public string _patientName;
     public Identity _npcIdentity { get; protected set; }
-    public int _attributes;
+    protected int _attributes;
     public bool _turned = false;
     public Sprite _forwardSprite;
     public Sprite _backwardsSprite;
-
-    public GameObject _nextPatientObject;
 
     //public List<bool> _attributesInvestigated = new List <bool>();
     

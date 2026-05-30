@@ -1,25 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-public class Gary : Patient
+public class Gary : MonoBehaviour
 {
-    [SerializeField] GameObject _attributeCanvas;
-    [SerializeField] GameObject _attribute1;
-    [SerializeField] GameObject _attribute2;
-    //[SerializeField] DialogueNode _investigationDialogue1;
-    public bool _attribute1Investigated = false;
-    public bool _attribute2Investigated = false;
-
-    //[SerializeField] GameObject _investigationDialogueUI;
-    //[SerializeField] TextMeshProUGUI _investigationDefenseText;
-
+    // Start is called before the first frame update
     void Start()
     {
-        _npcIdentity = Identity.Human;
-        _attributes = 0;
-        _patientName = "Gary";
+        
     }
 
     // Update is called once per frame
