@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 58de438476596924c81d266df6e718b9
+guid: 97d07720772e173418c6420543ba5c4d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,17 +43,17 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 303, y: 760, z: 286, w: 752}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -108,62 +108,40 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: GaryFront
-      rect:
-        serializedVersion: 2
-        x: 152
-        y: 46
-        width: 844
-        height: 1301
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f4011bb322cf3e640bdc5c55efee9e02
-      internalID: 1985032199
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GaryAss
-      rect:
-        serializedVersion: 2
-        x: 1037
-        y: 44
-        width: 844
-        height: 1301
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 52fab604cc3f6714682c7a69fbacd781
-      internalID: -561577796
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    outline: []
+    sprites: []
+    outline:
+    - - {x: -1890, y: 157}
+      - {x: -1894.125, y: 57.522827}
+      - {x: -1887.0918, y: -135.10034}
+      - {x: -1867, y: -172}
+      - {x: -1838.9398, y: -172.2143}
+      - {x: -1782, y: -122}
+      - {x: -1738, y: -96}
+      - {x: -883, y: -93}
+      - {x: 1656, y: -104}
+      - {x: 1909, y: -12}
+      - {x: 1798, y: 29}
+      - {x: 1632, y: 70}
+      - {x: -1574, y: 65}
+      - {x: -1590, y: 71}
+      - {x: -1607.3564, y: 66.16882}
+      - {x: -1633, y: 66}
+      - {x: -1647, y: 71}
+      - {x: -1664, y: 67}
+      - {x: -1713, y: 67}
+      - {x: -1721, y: 82}
+      - {x: -1739, y: 122}
+      - {x: -1813, y: 172}
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      GaryAss: -561577796
-      GaryFront: 1985032199
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
