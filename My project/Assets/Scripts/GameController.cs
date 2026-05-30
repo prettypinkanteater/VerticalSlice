@@ -12,6 +12,11 @@ public enum ShiftQuality
 }
 public class GameController : MonoBehaviour
 {
+    //[SerializeField] private Camera _mainCamera;
+
+    public int _shift;
+    public int _shiftPatientNumber;
+
     public ShiftQuality shiftQuality;
     public bool _examTime;
 
@@ -40,29 +45,34 @@ public class GameController : MonoBehaviour
     {
         _examTime = false;
         _examEnded = false;
-        _totalHumans = 0;
+        _totalHumans = 1;
         _totalFigures = 1;
+        // move to switch statement assessing which shift currently on
     }
     void Start()
     {
-        
+        _shift = 1;
+
+        _currentPatientObject.GetComponent<Galatea>().GalateaFinished += UpdateCurrentPatient;
+
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(_currentPatientObject != null)
-        {
-            _currentPatientObject.GetComponent<Galatea>().GalateaFinished += UpdateCurrentPatient;
-        }
+
     }
 
-    public void UpdateCurrentPatient(string nextPatientName)
+    public void UpdateCurrentPatient(GameObject nextPatientObj, string name)
     {
-        _currentPatient = nextPatientName;
-        _currentPatientObject = GameObject.Find(nextPatientName);
-
+        _currentPatientObject = nextPatientObj;
+        _currentPatient = name;
+        _currentPatientObject.SetActive(true);
+        _shiftPatientNumber++;
+        _examTime = false;
+        // use in state graph later to determine if it should transition to assessing shift quality
     }
+
     public void StartExam()
     {
         _examTime = true;
@@ -84,8 +94,14 @@ public class GameController : MonoBehaviour
                     _humanIdentifications++;
                     _incorrectIdentifications++;
                 }
-                //_examEnded = true;
-            ; break; 
+            ; break;
+
+            case "Gary":
+                if(identity == _currentPatientObject.GetComponent<Gary>()._npcIdentity.ToString())
+                {
+
+                }
+            ; break;
         }
 
         _currentPatientObject.GetComponent<Galatea>().NextPatient();

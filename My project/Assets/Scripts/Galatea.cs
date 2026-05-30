@@ -19,18 +19,19 @@ public class Galatea : Patient
     [SerializeField] TextMeshProUGUI _investigationDefenseText;
 
     // event signaling next patient....after gamecontroller updates
-    public delegate void nextPatient(string nextPatientName);
+    public delegate void nextPatient(GameObject nextPatientObj, string nextPatientName);
     public event nextPatient GalateaFinished;
 
     void Start()
     {
+        _nextPatientObject = GameObject.Find("Gary");
+        _nextPatientObject.SetActive(false);
         _npcIdentity = Identity.Figure;
         _attributes = 2;
         _patientName = "Galatea";
 
         Locator.Instance.gameController._currentPatient = _patientName;
         Locator.Instance.gameController._maxAttributes = _attributes;
-        Locator.Instance.gameController._currentPatientObject = gameObject;
 
         _attribute1.GetComponent<BoxCollider>().enabled = false;
         _attribute2.GetComponent<BoxCollider>().enabled = false;
@@ -106,7 +107,7 @@ public class Galatea : Patient
 
     public override void NextPatient()
     {
-        GalateaFinished.Invoke("Gary");
+        GalateaFinished.Invoke(_nextPatientObject, "Gary");
         base.NextPatient();
     }
 
