@@ -50,14 +50,6 @@ public class UI : MonoBehaviour
         
     }
 
-    public void showDialogueUI()
-    {
-        _dialogueText.enabled = true;
-        _characterName.enabled = true;
-        _dialoguePanel.SetActive(true);
-        _namePanel.SetActive(true);
-    }
-
     public void updateDialogueText(string line)
     {
         _dialogueText.text = line;
