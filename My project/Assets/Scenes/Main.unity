@@ -5350,6 +5350,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nail
       objectReference: {fileID: 0}
+    - target: {fileID: 4680871598021030143, guid: 5b0fe2ecd5e22af43b4492488e25cb76, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 0309a6493648b344a9a80fc63e3a68da, type: 2}
+    - target: {fileID: 4680871598021030143, guid: 5b0fe2ecd5e22af43b4492488e25cb76, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
