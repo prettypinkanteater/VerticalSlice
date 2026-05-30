@@ -17,6 +17,8 @@ public abstract class Patient : MonoBehaviour
     public Sprite _forwardSprite;
     public Sprite _backwardsSprite;
 
+    public DialogueNode _patientStartingDialogueNode;
+
     //public List<bool> _attributesInvestigated = new List <bool>();
     
 

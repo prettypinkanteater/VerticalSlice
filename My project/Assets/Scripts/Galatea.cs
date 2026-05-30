@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Galatea : Patient
 {
+    public GameObject _nextPatientObj;
 
     [SerializeField] GameObject _attributeCanvas;
     [SerializeField] GameObject _attribute1;
@@ -19,11 +20,16 @@ public class Galatea : Patient
     [SerializeField] TextMeshProUGUI _investigationDefenseText;
 
     // event signaling next patient....after gamecontroller updates
-    public delegate void nextPatient(string nextPatientName);
+    public delegate void nextPatient(GameObject nextPatientObj, string nextPatientName);
     public event nextPatient GalateaFinished;
+
 
     void Start()
     {
+        _turned = false;
+        _attributeCanvas.SetActive(false);
+        _nextPatientObj = GameObject.Find("Gary");
+        _nextPatientObj.SetActive(false);
         _npcIdentity = Identity.Figure;
         _attributes = 2;
         _patientName = "Galatea";
@@ -106,7 +112,8 @@ public class Galatea : Patient
 
     public override void NextPatient()
     {
-        GalateaFinished.Invoke("Gary");
+        Locator.Instance.dialogueAdvancer.ResetStartingDialogueNode(_nextPatientObj.GetComponent<Gary>()._patientStartingDialogueNode);
+        GalateaFinished.Invoke(_nextPatientObj, "Gary");
         base.NextPatient();
     }
 

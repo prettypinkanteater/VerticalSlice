@@ -49,5 +49,6 @@ public class Nail : MonoBehaviour
     public void AttributeIdentification()
     {
         GameObject.Find("Galatea").GetComponent<Galatea>().AttributeFound(_attributeTouching);
+        gameObject.SetActive(false);
     }
 }

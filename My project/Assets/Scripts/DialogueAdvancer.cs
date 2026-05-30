@@ -35,6 +35,7 @@ public class DialogueAdvancer : MonoBehaviour
 
     public void AdvanceDialogue()
     {
+        Debug.Log("Advance Dialogue");
         if(_currentLine < _currentNode._lines.Length)
         {
             _dialogueUI.updateDialogueText(_currentNode._lines[_currentLine]);
@@ -54,4 +55,13 @@ public class DialogueAdvancer : MonoBehaviour
             _dialogueUI.updateDialogueText(_currentNode._lines[0]);
             _dialogueUI.updateCharacterName(_currentNode.npcTalking);
     }
+
+    public void ResetStartingDialogueNode(DialogueNode dialogueNode)
+    {
+        _currentNode = dialogueNode;
+        _currentLine = 1;
+        _dialogueUI.updateDialogueText(_currentNode._lines[0]);
+        _dialogueUI.updateCharacterName(dialogueNode.npcTalking);
+    }
+
 }
