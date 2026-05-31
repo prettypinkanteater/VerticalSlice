@@ -55,19 +55,21 @@ public abstract class Patient : MonoBehaviour
 
     public virtual void Turn()
     {
-        if(_turned)
+        if (Locator.Instance.gameController._currentPatientObject == this.gameObject)
         {
-            GetComponent<SpriteRenderer>().sprite = _forwardSprite;
-            _turned = false;
-        }
-        else if (_turned == false)
-        {
-            GetComponent<SpriteRenderer>().sprite = _backwardsSprite;
-            _turned = true;
+            if (_turned)
+            {
+                GetComponent<SpriteRenderer>().sprite = _forwardSprite;
+                _turned = false;
+            }
+            else if (_turned == false)
+            {
+                GetComponent<SpriteRenderer>().sprite = _backwardsSprite;
+                _turned = true;
+            }
+
         }
 
-        // turned not set back to freaking false 
-        // implement attribute fixes to second one.
     }
 
     public virtual void NextPatient()

@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
     {
         NewShift();
         _currentPatientObject.GetComponent<Galatea>().EndShift1 += AssessShift;
-        //_currentPatientObject.GetComponent<Galatea>().GalateaFinished += UpdateCurrentPatient;
+        _currentPatientObject.GetComponent<Galatea>().GalateaFinished += UpdateCurrentPatient;
     }
 
     
@@ -84,7 +84,10 @@ public class GameController : MonoBehaviour
                 break;
         }
 
-        _newShift = true;
+        if(_shift != 1)
+        {
+            _newShift = true;
+        }
 
     }
     public void UpdateCurrentPatient(GameObject nextPatientObj, string nextPatientName)
@@ -133,10 +136,10 @@ public class GameController : MonoBehaviour
                     _figureIdentificaitons++;
                     _incorrectIdentifications++;
                 }
+                // next patient.. bunny!
             ; break;
         }
 
-        _currentPatientObject.GetComponent<Galatea>().NextPatient();
     }
 
     public void spawnNail()
@@ -154,7 +157,7 @@ public class GameController : MonoBehaviour
 
     public void AssessShift()
     {
-
+        _examTime = false;
         if ((_attributesFound == _maxAttributes) && ((_figureIdentificaitons == _totalFigures) && _incorrectIdentifications == 0))
         {
             Debug.Log("Good Job");
@@ -187,6 +190,7 @@ public class GameController : MonoBehaviour
         Locator.Instance._ui._shiftQualityText.SetActive(true);
         Locator.Instance._ui._shiftQualityPanel.SetActive(true);
         Locator.Instance._ui._shiftQualityText.GetComponent<TextMeshProUGUI>().text = "Shift Quality:" + " " + shiftQuality.ToString();
+        _currentPatientObject.GetComponent<Galatea>().NextPatient();
     }
 
 }

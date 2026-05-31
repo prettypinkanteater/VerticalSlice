@@ -20,8 +20,8 @@ public class Galatea : Patient
     [SerializeField] TextMeshProUGUI _investigationDefenseText;
 
     // event signaling next patient....after gamecontroller updates
-    //public delegate void nextPatient(GameObject nextPatientObj, string nextPatientName);
-    //public event nextPatient GalateaFinished;
+    public delegate void nextPatient(GameObject nextPatientObj, string nextPatientName);
+    public event nextPatient GalateaFinished;
 
     public delegate void endShift();
     public event endShift EndShift1;
@@ -116,10 +116,10 @@ public class Galatea : Patient
 
     public override void NextPatient()
     {
-        //_investigationDialogueUI.SetActive(false);
-        //_nextPatientObj.GetComponent<Gary>().enabled = true;
-        //Locator.Instance.dialogueAdvancer.ResetStartingDialogueNode(_nextPatientObj.GetComponent<Gary>()._patientStartingDialogueNode);
-        //GalateaFinished.Invoke(_nextPatientObj, "Gary");
+        _investigationDialogueUI.SetActive(false);
+        _nextPatientObj.GetComponent<Gary>().enabled = true;
+        Locator.Instance.dialogueAdvancer.ResetStartingDialogueNode(_nextPatientObj.GetComponent<Gary>()._patientStartingDialogueNode);
+        GalateaFinished.Invoke(_nextPatientObj, "Gary");
         base.NextPatient();
     }
 
