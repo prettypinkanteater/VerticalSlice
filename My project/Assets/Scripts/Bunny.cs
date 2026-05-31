@@ -1,73 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Galatea : Patient
+public class Bunny : Patient
 {
-    //public GameObject _nextPatientObj;
-
     
     [SerializeField] GameObject _attribute1;
     [SerializeField] GameObject _attribute2;
-    //[SerializeField] DialogueNode _investigationDialogue1;
+
     public bool _attribute1Investigated = false;
     public bool _attribute2Investigated = false;
 
     [SerializeField] GameObject _investigationDialogueUI;
     [SerializeField] TextMeshProUGUI _investigationDefenseText;
 
-    // event signaling next patient....after gamecontroller updates
-    public delegate void nextPatient(GameObject nextPatientObj, string nextPatientName);
-    public event nextPatient GalateaFinished;
-
-    public delegate void endShift();
-    public event endShift EndShift1;
-
+    // Start is called before the first frame update
     void Start()
     {
-        _turned = false;
-        _attributeCanvas.SetActive(false);
-        _nextPatientObj.GetComponent<Gary>().enabled = false;
-        _nextPatientObj.SetActive(false);
         _npcIdentity = Identity.Figure;
         _attributes = 2;
-        _patientName = "Galatea";
-
-        Locator.Instance.gameController._currentPatient = _patientName;
-        Locator.Instance.gameController._maxAttributes = _attributes;
-        Locator.Instance.gameController._currentPatientObject = gameObject;
-
-        _attribute1.GetComponent<BoxCollider>().enabled = false;
-        _attribute2.GetComponent<BoxCollider>().enabled = false;
-        
+        _patientName = "Bunny";
     }
 
-
+    // Update is called once per frame
     void Update()
     {
-        if(_turned == true)
+        if(Locator.Instance.gameController._currentPatientObject == gameObject)
         {
-            _attributeCanvas.SetActive(true);
-        }
-        else
-        {
-            _attributeCanvas.SetActive(false);
-        }
+            if (Locator.Instance.gameController._examTime == true && _turned == false)
+            {
+                _attributeCanvas.SetActive(true);
+            }
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            _investigationDialogueUI.SetActive(false);
+            if (Input.GetKey(KeyCode.Space))
+            {
+                _investigationDialogueUI.SetActive(false);
+            }
         }
     }
-
     public override void AttributeInvestigate(GameObject NPCattribute)
     {
-        if(Locator.Instance._ui._examWindow.activeSelf == false)
+        _investigationDialogueUI.SetActive(true);
+
+        if (Locator.Instance._ui._examWindow.activeSelf == false)
         {
-            _investigationDialogueUI.SetActive(true);
 
             if (NPCattribute == _attribute1)
             {
@@ -101,6 +78,8 @@ public class Galatea : Patient
             }
         }
 
+
+
     }
     public override void AttributeFound(GameObject NPCattribute)
     {
@@ -108,17 +87,9 @@ public class Galatea : Patient
         base.AttributeFound(NPCattribute);
     }
 
-    public override void Turn()
-    {
-        base.Turn();
-    }
-
     public override void NextPatient()
     {
-        _investigationDialogueUI.SetActive(false);
-        _nextPatientObj.GetComponent<Gary>().enabled = true;
-        Locator.Instance.dialogueAdvancer.ResetStartingDialogueNode(_nextPatientObj.GetComponent<Gary>()._patientStartingDialogueNode);
-        GalateaFinished.Invoke(_nextPatientObj, "Gary");
+        // lalal
         base.NextPatient();
     }
 

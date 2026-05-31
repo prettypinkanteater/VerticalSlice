@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Gary : Patient
 {
-    [SerializeField] GameObject _attributeCanvas;
+    
     [SerializeField] GameObject _attribute1;
     [SerializeField] GameObject _attribute2;
 
@@ -22,16 +22,17 @@ public class Gary : Patient
     void Start()
     {
         GetComponent<SpriteRenderer>().sprite = _forwardSprite;
-        _attributeCanvas.SetActive(false);
+        //_attributeCanvas.SetActive(false);
         _npcIdentity = Identity.Human;
         _attributes = 0;
         _patientName = "Gary";
+        _nextPatientObj.GetComponent<Bunny>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Locator.Instance.gameController._currentPatientObject == gameObject)
+        if(Locator.Instance.gameController._currentPatientObject == gameObject && Locator.Instance._ui._examWindow.activeSelf == false)
         {
             if (_turned == true && Locator.Instance.gameController._examTime == true)
             {
@@ -52,37 +53,44 @@ public class Gary : Patient
     public override void AttributeInvestigate(GameObject NPCattribute)
     {
         _investigationDialogueUI.SetActive(true);
-
-        if (NPCattribute == _attribute1)
+        if (Locator.Instance._ui._examWindow.activeSelf == false)
         {
-            if (_attribute1Investigated == true)
-            {
-                Debug.Log("nail 1");
-                AttributeFound(NPCattribute);
+            if (NPCattribute == _attribute1)
+                    {
+                        if (_attribute1Investigated == true)
+                        {
+                            Debug.Log("nail 1");
+                            AttributeFound(NPCattribute);
 
-            }
-            else
-            {
-                Debug.Log("investigating");
-                base.AttributeInvestigate(NPCattribute);
-                _attribute1Investigated = true;
-            }
+                        }
+                        else
+                        {
+                            Debug.Log("investigating");
+                            base.AttributeInvestigate(NPCattribute);
+                            _attribute1Investigated = true;
+                        }
+                    }
+                    if (NPCattribute == _attribute2)
+                    {
+                        if (_attribute2Investigated == true)
+                        {
+                            Debug.Log("nail 2");
+                            AttributeFound(NPCattribute);
+
+                        }
+                        else
+                        {
+                            Debug.Log("investigating 2");
+                            base.AttributeInvestigate(NPCattribute);
+                            _attribute2Investigated = true;
+                        }
+                    }
         }
-        if (NPCattribute == _attribute2)
+        else if(Locator.Instance._ui._examWindow.activeSelf == true)
         {
-            if (_attribute2Investigated == true)
-            {
-                Debug.Log("nail 2");
-                AttributeFound(NPCattribute);
-
-            }
-            else
-            {
-                Debug.Log("investigating 2");
-                base.AttributeInvestigate(NPCattribute);
-                _attribute2Investigated = true;
-            }
+            Debug.Log("nah");
         }
+            
 
     }
     public override void AttributeFound(GameObject NPCattribute)
@@ -93,7 +101,11 @@ public class Gary : Patient
 
     public override void NextPatient()
     {
-        // lalal
+        _investigationDialogueUI.SetActive(false);
+        _nextPatientObj.GetComponent<Bunny>().enabled = true;
+        Locator.Instance.dialogueAdvancer.ResetStartingDialogueNode(_nextPatientObj.GetComponent<Bunny>()._patientStartingDialogueNode);
+        GaryFinished.Invoke(_nextPatientObj, "Bunny");
+        _attributeCanvas.SetActive(false);
         base.NextPatient();
     }
 }

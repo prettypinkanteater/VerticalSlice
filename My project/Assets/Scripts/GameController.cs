@@ -52,6 +52,7 @@ public class GameController : MonoBehaviour
         NewShift();
         _currentPatientObject.GetComponent<Galatea>().EndShift1 += AssessShift;
         _currentPatientObject.GetComponent<Galatea>().GalateaFinished += UpdateCurrentPatient;
+        GameObject.Find("Gary").GetComponent<Gary>().GaryFinished += UpdateCurrentPatient;
     }
 
     
@@ -80,7 +81,7 @@ public class GameController : MonoBehaviour
             case 2:
                 _totalFigures = 1;
                 _totalHumans = 1;
-                _maxAttributes = 1;
+                _maxAttributes = 2;
                 break;
         }
 
@@ -125,9 +126,9 @@ public class GameController : MonoBehaviour
                     _incorrectIdentifications++;
                 }
                 _examEnded = true;
-            ; break;
+                ; break;
             case "Gary":
-                if(identity == _currentPatientObject.GetComponent<Gary>()._npcIdentity.ToString())
+                if (identity == _currentPatientObject.GetComponent<Gary>()._npcIdentity.ToString())
                 {
                     _humanIdentifications++;
                 }
@@ -136,8 +137,20 @@ public class GameController : MonoBehaviour
                     _figureIdentificaitons++;
                     _incorrectIdentifications++;
                 }
-                // next patient.. bunny!
-            ; break;
+                _currentPatientObject.GetComponent<Gary>().NextPatient();
+                ; break;
+            case "Bunny":
+                if (identity == _currentPatientObject.GetComponent<Bunny>()._npcIdentity.ToString())
+                {
+                    _figureIdentificaitons++;
+                }
+                else
+                {
+                    _incorrectIdentifications++;
+                    _humanIdentifications++;
+                }
+                _examEnded = true;
+                ; break;
         }
 
     }
@@ -157,20 +170,22 @@ public class GameController : MonoBehaviour
 
     public void AssessShift()
     {
+        Debug.Log("Assessing Shift");
+        _newShift = false;
         _examTime = false;
         if ((_attributesFound == _maxAttributes) && ((_figureIdentificaitons == _totalFigures) && _incorrectIdentifications == 0))
         {
             Debug.Log("Good Job");
             shiftQuality = ShiftQuality.Excellent;
         }
-        else if((_attributesFound < _maxAttributes) || (_incorrectIdentifications > 0))
+        else if ((_attributesFound < _maxAttributes) || (_incorrectIdentifications > 0))
         {
-            if ((_totalFigures > 1) && (_figureIdentificaitons < _totalFigures/2))
+            if ((_totalFigures > 1) && (_figureIdentificaitons < _totalFigures / 2))
             {
                 Debug.Log("Poor 1");
                 shiftQuality = ShiftQuality.Poor;
             }
-            else if (_attributesFound < _maxAttributes/2)
+            else if (_attributesFound < _maxAttributes / 2)
             {
                 Debug.Log("Poor 2");
                 shiftQuality = ShiftQuality.Poor;
@@ -190,7 +205,12 @@ public class GameController : MonoBehaviour
         Locator.Instance._ui._shiftQualityText.SetActive(true);
         Locator.Instance._ui._shiftQualityPanel.SetActive(true);
         Locator.Instance._ui._shiftQualityText.GetComponent<TextMeshProUGUI>().text = "Shift Quality:" + " " + shiftQuality.ToString();
-        _currentPatientObject.GetComponent<Galatea>().NextPatient();
+
+        if (_currentPatientObject == GameObject.Find("Galatea"))
+        {
+            _currentPatientObject.GetComponent<Galatea>().NextPatient();
+        }
+        
     }
 
 }

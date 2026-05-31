@@ -56,6 +56,10 @@ public class Nail : MonoBehaviour
         {
             GameObject.Find("Gary").GetComponent<Gary>().AttributeFound(_attributeTouching);
         }
+        if(_attributeTouching.tag == "Bunny")
+        {
+            GameObject.Find("Bunny").GetComponent<Bunny>().AttributeFound(_attributeTouching);
+        }
 
         _nailPlayableDirector.time = 0;
         _nailPlayableDirector.enabled = false;

@@ -30,6 +30,7 @@ public class UI : MonoBehaviour
     [SerializeField] public GameObject _attribute2;*/
 
     [SerializeField] public GameObject _investigationDefenseText;
+    [SerializeField] public GameObject _investigationDefensePanel;
 
     void Start()
     {
@@ -80,14 +81,15 @@ public class UI : MonoBehaviour
     {
         if(attribute.name == "Attribute 1")
         {
+            _dialoguePanel.SetActive(true);
             _investigationDefenseText.GetComponent<TextMeshProUGUI>().text = defense._lines[0];
         }
         else if(attribute.name == "Attribute 2")
         {
+            _dialoguePanel.SetActive(true);
             _investigationDefenseText.GetComponent<TextMeshProUGUI>().text = defense._lines[1];
         }
 
-        _dialoguePanel.SetActive(true);
     }
 
     public void showIdentificationWindow()

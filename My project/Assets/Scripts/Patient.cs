@@ -10,6 +10,9 @@ public enum Identity {
 
 public abstract class Patient : MonoBehaviour
 {
+    public GameObject _nextPatientObj;
+    public GameObject _attributeCanvas;
+
     public string _patientName;
     public Identity _npcIdentity { get; protected set; }
     protected int _attributes;
@@ -26,12 +29,15 @@ public abstract class Patient : MonoBehaviour
     void Start()
     {
         Locator.Instance.gameController._maxAttributes += _attributes;
+        _turned = false;
+        _attributeCanvas.SetActive(false);
+        _nextPatientObj.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public virtual void InvestigateOrFound()

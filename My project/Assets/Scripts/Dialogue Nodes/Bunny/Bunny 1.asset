@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf72940f56fa4944b96a056293a7297, type: 3}
+  m_Name: Bunny 1
+  m_EditorClassIdentifier: 
+  npcTalking: Bunny
+  _lines:
+  - my mother sent me here because i 'hurt" her
+  - 'really, i just told her i didnt love her. '
+  - i thought honesty was a good trait.
+  - if anything, her affection digusts me.
+  - she treats me as if i am a doll, uncomfortable with my ever present "self"
+  - 'she simply cannot dress my "self" to follow her ideal gestures and throws a
+    tantrum, entreating me to be "kind" '
+  - im repulsed by the womb i come from, though i know this is abnormal
+  _nextNode:
+  - {fileID: 11400000, guid: f3d9b24eba007454b9bc911a20a6e148, type: 2}
+  examNext: 0
