@@ -109,7 +109,7 @@ public class GameController : MonoBehaviour
     {
         _examTime = true;
         Locator.Instance.dialogueAdvancer._currentLine = 0;
-        Locator.Instance._ui._endButton.SetActive(true);
+        Locator.Instance._uiController._endButton.SetActive(true);
     }
 
     public void Identification(string identity)
@@ -205,9 +205,9 @@ public class GameController : MonoBehaviour
             }
         }
 
-        Locator.Instance._ui._shiftQualityText.SetActive(true);
-        Locator.Instance._ui._shiftQualityPanel.SetActive(true);
-        Locator.Instance._ui._shiftQualityText.GetComponent<TextMeshProUGUI>().text = "Shift Quality:" + " " + shiftQuality.ToString();
+        Locator.Instance._uiController._shiftQualityText.SetActive(true);
+        Locator.Instance._uiController._shiftQualityPanel.SetActive(true);
+        Locator.Instance._uiController._shiftQualityText.GetComponent<TextMeshProUGUI>().text = "Shift Quality:" + " " + shiftQuality.ToString();
 
         if (_currentPatientObject == GameObject.Find("Galatea"))
         {

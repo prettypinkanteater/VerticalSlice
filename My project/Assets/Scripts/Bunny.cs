@@ -43,7 +43,7 @@ public class Bunny : Patient
     {
         _investigationDialogueUI.SetActive(true);
 
-        if (Locator.Instance._ui._examWindow.activeSelf == false)
+        if (Locator.Instance._uiController._examWindow.activeSelf == false)
         {
 
             if (NPCattribute == _attribute1)

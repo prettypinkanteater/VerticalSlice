@@ -47,7 +47,7 @@ public abstract class Patient : MonoBehaviour
 
     public virtual void AttributeInvestigate(GameObject attribute)
     {
-        Locator.Instance._ui.investigationDefense(attribute, _investigationDefenseNode);
+        Locator.Instance._uiController.investigationDefense(attribute, _investigationDefenseNode);
         attribute.GetComponent<Button>().enabled = false;
         attribute.GetComponent<BoxCollider>().enabled = true;
         

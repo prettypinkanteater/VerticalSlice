@@ -65,7 +65,7 @@ public class Galatea : Patient
 
     public override void AttributeInvestigate(GameObject NPCattribute)
     {
-        if(Locator.Instance._ui._examWindow.activeSelf == false)
+        if(Locator.Instance._uiController._examWindow.activeSelf == false)
         {
             _investigationDialogueUI.SetActive(true);
 

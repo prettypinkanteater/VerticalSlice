@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UI : MonoBehaviour
+public class uiController : MonoBehaviour
 {
     [SerializeField] public TextMeshProUGUI _dialogueText;
     [SerializeField] public TextMeshProUGUI _characterName;

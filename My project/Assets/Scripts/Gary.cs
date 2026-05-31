@@ -32,7 +32,7 @@ public class Gary : Patient
     // Update is called once per frame
     void Update()
     {
-        if(Locator.Instance.gameController._currentPatientObject == gameObject && Locator.Instance._ui._examWindow.activeSelf == false)
+        if(Locator.Instance.gameController._currentPatientObject == gameObject && Locator.Instance._uiController._examWindow.activeSelf == false)
         {
             if (_turned == true && Locator.Instance.gameController._examTime == true)
             {
@@ -53,7 +53,7 @@ public class Gary : Patient
     public override void AttributeInvestigate(GameObject NPCattribute)
     {
         _investigationDialogueUI.SetActive(true);
-        if (Locator.Instance._ui._examWindow.activeSelf == false)
+        if (Locator.Instance._uiController._examWindow.activeSelf == false)
         {
             if (NPCattribute == _attribute1)
                     {
@@ -86,7 +86,7 @@ public class Gary : Patient
                         }
                     }
         }
-        else if(Locator.Instance._ui._examWindow.activeSelf == true)
+        else if(Locator.Instance._uiController._examWindow.activeSelf == true)
         {
             Debug.Log("nah");
         }

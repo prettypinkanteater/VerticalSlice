@@ -8,7 +8,7 @@ public class DialogueAdvancer : MonoBehaviour
     public DialogueNode _currentNode;
     [SerializeField] private DialogueNode _startingNode;
     public int _currentLine;
-    [SerializeField] private UI _dialogueUI;
+    [SerializeField] private uiController _dialogueUI;
     
     
     //_currentNode._examTime;
