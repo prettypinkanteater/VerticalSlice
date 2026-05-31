@@ -96,6 +96,7 @@ public class Gary : Patient
     public override void AttributeFound(GameObject NPCattribute)
     {
         Debug.Log("found");
+        Locator.Instance.gameController._incorrectMarkedAttributes++;
         base.AttributeFound(NPCattribute);
     }
 

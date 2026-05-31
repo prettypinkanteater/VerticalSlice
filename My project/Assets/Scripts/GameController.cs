@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
     public float _totalHumans;
 
     public float _incorrectIdentifications;
+    public float _incorrectMarkedAttributes;
 
     //public bool _allAttributesFound;
     public string _currentPatient;
@@ -67,6 +68,7 @@ public class GameController : MonoBehaviour
         _incorrectIdentifications = 0;
         _humanIdentifications = 0;
         _figureIdentificaitons = 0;
+        _incorrectMarkedAttributes = 0;
         _shiftPatientNumber = 1;
         _shift++;
 
@@ -173,7 +175,8 @@ public class GameController : MonoBehaviour
         Debug.Log("Assessing Shift");
         _newShift = false;
         _examTime = false;
-        if ((_attributesFound == _maxAttributes) && ((_figureIdentificaitons == _totalFigures) && _incorrectIdentifications == 0))
+        if ((_attributesFound == _maxAttributes && _figureIdentificaitons == _totalFigures) 
+            && (_incorrectIdentifications == 0 && _incorrectMarkedAttributes == 0))
         {
             Debug.Log("Good Job");
             shiftQuality = ShiftQuality.Excellent;
