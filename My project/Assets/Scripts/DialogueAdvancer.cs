@@ -28,6 +28,7 @@ public class DialogueAdvancer : MonoBehaviour
             {
                 _dialogueUI.showExamStartButton();
                 Cursor.lockState = CursorLockMode.None;
+                _currentNode = null;
             }
     }
 

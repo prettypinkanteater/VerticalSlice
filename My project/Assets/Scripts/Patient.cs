@@ -18,13 +18,14 @@ public abstract class Patient : MonoBehaviour
     public Sprite _backwardsSprite;
 
     public DialogueNode _patientStartingDialogueNode;
+    public DialogueNode _investigationDefenseNode;
 
     //public List<bool> _attributesInvestigated = new List <bool>();
-    
+
 
     void Start()
     {
-        
+        Locator.Instance.gameController._maxAttributes += _attributes;
     }
 
     // Update is called once per frame
@@ -40,7 +41,7 @@ public abstract class Patient : MonoBehaviour
 
     public virtual void AttributeInvestigate(GameObject attribute)
     {
-        Locator.Instance._ui.investigationDefense(attribute);
+        Locator.Instance._ui.investigationDefense(attribute, _investigationDefenseNode);
         attribute.GetComponent<Button>().enabled = false;
         attribute.GetComponent<BoxCollider>().enabled = true;
         

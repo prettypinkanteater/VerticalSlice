@@ -5,6 +5,10 @@ using UnityEngine.EventSystems;
 
 public class Attribute : MonoBehaviour
 {
+    private void Start()
+    {
+        GetComponent<BoxCollider>().enabled = false;
+    }
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("touching touching omg");

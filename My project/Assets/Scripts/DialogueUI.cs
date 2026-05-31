@@ -23,11 +23,11 @@ public class UI : MonoBehaviour
     [SerializeField] public GameObject _shiftQualityText;
     [SerializeField] public GameObject _shiftQualityPanel;
 
-    [SerializeField] public DialogueNode _attribute1DefenseNode;
+    /*[SerializeField] public DialogueNode _attribute1DefenseNode;
     [SerializeField] public DialogueNode _attribute2DefenseNode;
 
     [SerializeField] public GameObject _attribute1;
-    [SerializeField] public GameObject _attribute2;
+    [SerializeField] public GameObject _attribute2;*/
 
     [SerializeField] public GameObject _investigationDefenseText;
 
@@ -76,15 +76,15 @@ public class UI : MonoBehaviour
         _startExamButtonUI.SetActive(true);
     }
 
-    public void investigationDefense(GameObject attribute)
+    public void investigationDefense(GameObject attribute, DialogueNode defense)
     {
-        if(attribute == _attribute1)
+        if(attribute.name == "Attribute 1")
         {
-            _investigationDefenseText.GetComponent<TextMeshProUGUI>().text = _attribute1DefenseNode._lines[0];
+            _investigationDefenseText.GetComponent<TextMeshProUGUI>().text = defense._lines[0];
         }
-        else if(attribute == _attribute2)
+        else if(attribute.name == "Attribute 2")
         {
-            _investigationDefenseText.GetComponent<TextMeshProUGUI>().text = _attribute2DefenseNode._lines[0];
+            _investigationDefenseText.GetComponent<TextMeshProUGUI>().text = defense._lines[1];
         }
 
         _dialoguePanel.SetActive(true);

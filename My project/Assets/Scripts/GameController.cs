@@ -12,11 +12,12 @@ public enum ShiftQuality
 }
 public class GameController : MonoBehaviour
 {
-    public int _shift = 1;
-    public int _shiftPatientNumber = 1;
+    public int _shift;
+    public int _shiftPatientNumber;
 
     public ShiftQuality shiftQuality;
     public bool _examTime;
+    public bool _newShift = false;
 
     // attributes marked 
     public float _attributesFound;
@@ -26,10 +27,11 @@ public class GameController : MonoBehaviour
     public float _humanIdentifications;
     public float _figureIdentificaitons;
 
-    public float _totalFigures = 1;
-    public float _totalHumans = 0;
+    public float _totalFigures;
+    public float _totalHumans;
 
     public float _incorrectIdentifications;
+
     //public bool _allAttributesFound;
     public string _currentPatient;
     public GameObject _currentPatientObject;
@@ -43,12 +45,13 @@ public class GameController : MonoBehaviour
     {
         _examTime = false;
         _examEnded = false;
-        _totalHumans = 1;
-        _totalFigures = 1;
+   
     }
     void Start()
     {
-        _currentPatientObject.GetComponent<Galatea>().GalateaFinished += UpdateCurrentPatient;
+        NewShift();
+        _currentPatientObject.GetComponent<Galatea>().EndShift1 += AssessShift;
+        //_currentPatientObject.GetComponent<Galatea>().GalateaFinished += UpdateCurrentPatient;
     }
 
     
@@ -57,12 +60,42 @@ public class GameController : MonoBehaviour
 
     }
 
+    public void NewShift()
+    {
+        _attributesFound = 0;
+        _incorrectIdentifications = 0;
+        _humanIdentifications = 0;
+        _figureIdentificaitons = 0;
+        _shiftPatientNumber = 1;
+        _shift++;
+
+        switch (_shift)
+        {
+            case 1:
+                _totalFigures = 1;
+                _totalHumans = 0;
+                _maxAttributes = 2;
+                break;
+
+            case 2:
+                _totalFigures = 1;
+                _totalHumans = 1;
+                _maxAttributes = 1;
+                break;
+        }
+
+        _newShift = true;
+
+    }
     public void UpdateCurrentPatient(GameObject nextPatientObj, string nextPatientName)
     {
         _currentPatient = nextPatientName;
         _currentPatientObject = nextPatientObj;
         _currentPatientObject.SetActive(true);
-        _shiftPatientNumber++;
+        if(_shiftPatientNumber == 1)
+        {
+            _shiftPatientNumber++;
+        }
         _examTime = false;
 
     }
@@ -88,7 +121,7 @@ public class GameController : MonoBehaviour
                     _humanIdentifications++;
                     _incorrectIdentifications++;
                 }
-                //_examEnded = true;
+                _examEnded = true;
             ; break;
             case "Gary":
                 if(identity == _currentPatientObject.GetComponent<Gary>()._npcIdentity.ToString())

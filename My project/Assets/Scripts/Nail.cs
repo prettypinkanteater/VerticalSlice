@@ -26,7 +26,7 @@ public class Nail : MonoBehaviour
     }
     private void Update()
     {
-         
+         // how does the nail disable animator and shi
     }
     public void DragHandler(BaseEventData data)
     {
@@ -48,7 +48,19 @@ public class Nail : MonoBehaviour
 
     public void AttributeIdentification()
     {
-        GameObject.Find("Galatea").GetComponent<Galatea>().AttributeFound(_attributeTouching);
+        if (_attributeTouching.tag == "Galatea")
+        {
+            GameObject.Find("Galatea").GetComponent<Galatea>().AttributeFound(_attributeTouching);
+        }
+        if (_attributeTouching.tag == "Gary")
+        {
+            GameObject.Find("Gary").GetComponent<Gary>().AttributeFound(_attributeTouching);
+        }
+
+        _nailPlayableDirector.time = 0;
+        _nailPlayableDirector.enabled = false;
+        _nailAnimator.enabled = false; 
         gameObject.SetActive(false);
+
     }
 }

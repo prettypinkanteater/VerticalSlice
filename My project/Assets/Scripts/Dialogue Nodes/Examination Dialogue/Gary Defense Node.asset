@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cf72940f56fa4944b96a056293a7297, type: 3}
-  m_Name: Galatea Attribute 2
+  m_Name: Gary Defense Node
   m_EditorClassIdentifier: 
-  npcTalking: 
+  npcTalking: Gary
   _lines:
-  - I tried to remove this....
+  - hey man you've never seen a piece of hair also be part of my contour??
+  - god forbid i have such nice cheeks.
   _nextNode: []
   examNext: 0

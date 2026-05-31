@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Gary : Patient
@@ -11,8 +12,16 @@ public class Gary : Patient
     public bool _attribute1Investigated = false;
     public bool _attribute2Investigated = false;
 
+    [SerializeField] GameObject _investigationDialogueUI;
+    [SerializeField] TextMeshProUGUI _investigationDefenseText;
+    // this would lowk be easier to put in the damn parent class smh
+
+    public delegate void nextPatient(GameObject nextPatientObj, string nextPatientName);
+    public event nextPatient GaryFinished;
+
     void Start()
     {
+        GetComponent<SpriteRenderer>().sprite = _forwardSprite;
         _attributeCanvas.SetActive(false);
         _npcIdentity = Identity.Human;
         _attributes = 0;
@@ -24,7 +33,7 @@ public class Gary : Patient
     {
         if(Locator.Instance.gameController._currentPatientObject == gameObject)
         {
-            if (_turned == true)
+            if (_turned == true && Locator.Instance.gameController._examTime == true)
             {
                 _attributeCanvas.SetActive(true);
             }
@@ -35,8 +44,56 @@ public class Gary : Patient
 
             if (Input.GetKey(KeyCode.Space))
             {
-                //_investigationDialogueUI.SetActive(false);
+                _investigationDialogueUI.SetActive(false);
             }
         }
+    }
+
+    public override void AttributeInvestigate(GameObject NPCattribute)
+    {
+        _investigationDialogueUI.SetActive(true);
+
+        if (NPCattribute == _attribute1)
+        {
+            if (_attribute1Investigated == true)
+            {
+                Debug.Log("nail 1");
+                AttributeFound(NPCattribute);
+
+            }
+            else
+            {
+                Debug.Log("investigating");
+                base.AttributeInvestigate(NPCattribute);
+                _attribute1Investigated = true;
+            }
+        }
+        if (NPCattribute == _attribute2)
+        {
+            if (_attribute2Investigated == true)
+            {
+                Debug.Log("nail 2");
+                AttributeFound(NPCattribute);
+
+            }
+            else
+            {
+                Debug.Log("investigating 2");
+                base.AttributeInvestigate(NPCattribute);
+                _attribute2Investigated = true;
+            }
+        }
+
+    }
+    public override void AttributeFound(GameObject NPCattribute)
+    {
+        Debug.Log("found");
+        base.AttributeFound(NPCattribute);
+    }
+
+    public override void NextPatient()
+    {
+        // lalal
+        base.NextPatient();
     }
 }

@@ -12,7 +12,7 @@ public class Galatea : Patient
     [SerializeField] GameObject _attributeCanvas;
     [SerializeField] GameObject _attribute1;
     [SerializeField] GameObject _attribute2;
-    [SerializeField] DialogueNode _investigationDialogue1;
+    //[SerializeField] DialogueNode _investigationDialogue1;
     public bool _attribute1Investigated = false;
     public bool _attribute2Investigated = false;
 
@@ -20,15 +20,17 @@ public class Galatea : Patient
     [SerializeField] TextMeshProUGUI _investigationDefenseText;
 
     // event signaling next patient....after gamecontroller updates
-    public delegate void nextPatient(GameObject nextPatientObj, string nextPatientName);
-    public event nextPatient GalateaFinished;
+    //public delegate void nextPatient(GameObject nextPatientObj, string nextPatientName);
+    //public event nextPatient GalateaFinished;
 
+    public delegate void endShift();
+    public event endShift EndShift1;
 
     void Start()
     {
         _turned = false;
         _attributeCanvas.SetActive(false);
-        _nextPatientObj = GameObject.Find("Gary");
+        _nextPatientObj.GetComponent<Gary>().enabled = false;
         _nextPatientObj.SetActive(false);
         _npcIdentity = Identity.Figure;
         _attributes = 2;
@@ -64,37 +66,39 @@ public class Galatea : Patient
 
     public override void AttributeInvestigate(GameObject NPCattribute)
     {
-        _investigationDialogueUI.SetActive(true);
-        
+        if(Locator.Instance._ui._examWindow.activeSelf == false)
+        {
+            _investigationDialogueUI.SetActive(true);
 
-        if(NPCattribute == _attribute1)
-        {
-            if (_attribute1Investigated == true)
+            if (NPCattribute == _attribute1)
             {
-                Debug.Log("nail 1");
-                AttributeFound(NPCattribute);
-                
+                if (_attribute1Investigated == true)
+                {
+                    Debug.Log("nail 1");
+                    AttributeFound(NPCattribute);
+
+                }
+                else
+                {
+                    Debug.Log("investigating");
+                    base.AttributeInvestigate(NPCattribute);
+                    _attribute1Investigated = true;
+                }
             }
-            else
+            if (NPCattribute == _attribute2)
             {
-                Debug.Log("investigating");
-                base.AttributeInvestigate(NPCattribute);
-                _attribute1Investigated = true;
-            }
-        }
-        if(NPCattribute == _attribute2)
-        {
-            if(_attribute2Investigated == true)
-            {
-                Debug.Log("nail 2");
-                AttributeFound(NPCattribute);
-                
-            }
-            else
-            {
-                Debug.Log("investigating 2");
-                base.AttributeInvestigate(NPCattribute);
-                _attribute2Investigated = true;
+                if (_attribute2Investigated == true)
+                {
+                    Debug.Log("nail 2");
+                    AttributeFound(NPCattribute);
+
+                }
+                else
+                {
+                    Debug.Log("investigating 2");
+                    base.AttributeInvestigate(NPCattribute);
+                    _attribute2Investigated = true;
+                }
             }
         }
 
@@ -112,8 +116,10 @@ public class Galatea : Patient
 
     public override void NextPatient()
     {
-        Locator.Instance.dialogueAdvancer.ResetStartingDialogueNode(_nextPatientObj.GetComponent<Gary>()._patientStartingDialogueNode);
-        GalateaFinished.Invoke(_nextPatientObj, "Gary");
+        //_investigationDialogueUI.SetActive(false);
+        //_nextPatientObj.GetComponent<Gary>().enabled = true;
+        //Locator.Instance.dialogueAdvancer.ResetStartingDialogueNode(_nextPatientObj.GetComponent<Gary>()._patientStartingDialogueNode);
+        //GalateaFinished.Invoke(_nextPatientObj, "Gary");
         base.NextPatient();
     }
 

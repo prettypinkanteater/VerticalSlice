@@ -15,5 +15,6 @@ MonoBehaviour:
   npcTalking: Galatea
   _lines:
   - I woke up like this...
+  - I tried to remove this....
   _nextNode: []
   examNext: 0
