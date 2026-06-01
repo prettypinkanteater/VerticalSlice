@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     public ShiftQuality shiftQuality;
     public bool _examTime;
     public bool _newShift = false;
+    public bool _tutorialTime = false;
 
     // attributes marked 
     public float _attributesFound;

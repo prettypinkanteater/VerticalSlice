@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf72940f56fa4944b96a056293a7297, type: 3}
+  m_Name: Tutorial
+  m_EditorClassIdentifier: 
+  npcTalking: 
+  _lines:
+  - The director is looking to distinguish Figures from normal human patients.
+  - Figures have "rendering anomolies", bodily atttributes that are mutations of
+    normal flesh and bone.
+  - (wonder what that looks like...)
+  - The director wants me to use nails to mark these attributes...
+  - Almost like an icepick lobotomy...I've only spectated one once, and that already
+    made me feel sick.
+  - I guess I'll have to be quick with the nails.
+  - Accordingly, it makes sense that I need to interrogate them about potential attributes
+    before marking.
+  - Judging by the large pile they've provided, I assume they intend for me to mark
+    as many attributes as I can.
+  - The director also wants me to finalize my identification status of the patient
+    at the end of the examination, once I'm sure I've marked all attributes.
+  - This patient, Galatea, looks normal from the front, so I guess I'll check her
+    back for any attributes.
+  - I best be thorough.
+  _nextNode: []
+  examNext: 0

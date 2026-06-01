@@ -32,6 +32,9 @@ public class uiController : MonoBehaviour
     [SerializeField] public GameObject _investigationDefenseText;
     [SerializeField] public GameObject _investigationDefensePanel;
 
+    [SerializeField] public GameObject _tutorialText;
+    [SerializeField] public GameObject _tutorialPanel;
+
     void Start()
     {
         _nailPileButton.SetActive(false);
@@ -42,15 +45,32 @@ public class uiController : MonoBehaviour
         _identitySelectedText.SetActive(false);
         _shiftQualityText.SetActive(false);
         _shiftQualityPanel.SetActive(false);
-        
+        _tutorialPanel.SetActive(false);
+        _tutorialText.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
+    public void showTutorialUI()
+    {
+        _tutorialPanel.SetActive(true);
+        _tutorialText.SetActive(true);
+    }
+    public void updateTutorialText(string line)
+    {
+        _tutorialText.GetComponent<TextMeshProUGUI>().text = line;
+    }
+
+    public void killTutorialUI()
+    {
+        //Debug.Log("killing myself");
+        _tutorialPanel.SetActive(false);
+        _tutorialText.SetActive(false);
+    }
     public void showDialogueUI()
     {
         _dialogueText.enabled = true;
