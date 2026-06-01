@@ -46,6 +46,14 @@ My Shader Graph creates an outline by utilizing the 2D texture image, in this ca
 The graph does multiple things with this value, it subtracts the original opaque alpha values, where the sprite actually is, of the texture from the newly "added" alpha values, so that those pixels become the outline and not just a colorless silhouette. It then adds the original texture back to the resulting outline so that the sprite, and all the colors with those respective alpha values, are also visible.
 Most importantly, the graph contains a sub-graph that references the texture's height and width and uses the divide node to divide those values by the offset value, manipulating the positional placement of the rendered opaque outline on the y-axis (upper + lower) and x-axis (left + right).  
 
+#### Main Graph:
+<img width="1627" height="949" alt="image" src="https://github.com/user-attachments/assets/aef1e350-51f4-4e32-a7ad-8e899a02973d" />
+
+#### Sub-Graph
+<img width="1431" height="647" alt="image" src="https://github.com/user-attachments/assets/83a62896-a065-441d-863f-36e4f09ac0e8" />
+
+Note that due to the shape of the sprite, the outline on the head of the nail is a bit strange because I believe it has a difficult time seperating the edges of the upper, lower, and left-side outlines.
+
 ### 2.
 I made the dialogue boxes change color in order to differentiate the dialogue speakers for narrative clarity. I also added a brief tutorial window/text during the first shift to guide the player through the gameplay loop.
 
