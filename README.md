@@ -40,7 +40,21 @@ I used Timelines for the nail rotation and position animation that occurs after 
 It also uses a Signal Emitter to tell the gameController when the animation has finished to update the amount of attributes marked. Currently, I have not implemented the nail resetting to a more suitable position after appearing again.
 
 ## Milestone 3 Devlog
-Milestone 3 Devlog goes here.
+
+### 1.
+My Shader Graph creates an outline by utilizing the 2D texture image, in this case the sprite image that is stored as a graph property, of the nail that is used in the exam with a Sample Texture 2D node. Specifically, it displays, stores, and helps communicate the Alpha values, or opaqueness, of each pixel in it.
+The graph does multiple things with this value, it subtracts the original opaque alpha values, where the sprite actually is, of the texture from the newly "added" alpha values, so that those pixels become the outline and not just a colorless silhouette. It then adds the original texture back to the resulting outline so that the sprite, and all the colors with those respective alpha values, are also visible.
+Most importantly, the graph contains a sub-graph that references the texture's height and width and uses the divide node to divide those values by the offset value, manipulating the positional placement of the rendered opaque outline on the y-axis (upper + lower) and x-axis (left + right).  
+
+### 2.
+I made the dialogue boxes change color in order to differentiate the dialogue speakers for narrative clarity. I also added a brief tutorial window/text during the first shift to guide the player through the gameplay loop.
+
+### 3.
+I added a new shift containing 2 more patient NPCs, one of them being a human so the potential of getting an incorrect attribute mark is possible. My gameplay loop involves greeting patients, examining patients by investigating any -> marking any Figure attributes then identifying the patient as Figure or human, and getting the quality of the shift's examinations assessed for accuracy.
+
+#### Notes
+There is no more intended content after the two shifts, have not implemented disability of new shift button. Gary is potentially placeholder content for testing "human" patients, I feel maternal towards him and I would mourn his removal. But, we shall see.
+
 ## Milestone 4 Devlog
 Milestone 4 Devlog goes here.
 ## Final Devlog
