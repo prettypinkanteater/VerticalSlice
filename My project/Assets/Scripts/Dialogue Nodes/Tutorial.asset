@@ -14,22 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcTalking: 
   _lines:
-  - The director is looking to distinguish Figures from normal human patients.
-  - Figures have "rendering anomolies", bodily atttributes that are mutations of
-    normal flesh and bone.
-  - (wonder what that looks like...)
-  - The director wants me to use nails to mark these attributes...
-  - Almost like an icepick lobotomy...I've only spectated one once, and that already
-    made me feel sick.
+  - The director wants me to use nails to mark Figure attributes...
+  - The motion is almost like an icepick lobotomy...I've only spectated one once,
+    and that already made me feel sick.
   - I guess I'll have to be quick with the nails.
-  - Accordingly, it makes sense that I need to interrogate them about potential attributes
-    before marking.
-  - Judging by the large pile they've provided, I assume they intend for me to mark
-    as many attributes as I can.
+  - I'll also need to interrogate them about potential attributes before marking,
+    seeing as its a permanent mark...
+  - Judging by the large pile the director provided, they intend for me to mark as
+    many attributes as I can.
   - The director also wants me to finalize my identification status of the patient
     at the end of the examination, once I'm sure I've marked all attributes.
-  - This patient, Galatea, looks normal from the front, so I guess I'll check her
-    back for any attributes.
-  - I best be thorough.
+  - I wonder what he will do with the Figures.
+  - Anyways, this patient, Galatea, looks normal from the front, so I guess I'll
+    check her back for any attributes.
+  - I best be thorough and follow through with the procedure.
+  - ...
   _nextNode: []
   examNext: 0

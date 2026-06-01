@@ -26,9 +26,14 @@ public class DialogueAdvancer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && _dialogueUI._tutorialPanel.activeSelf == true)
         {
             AdvanceTutorial();
+        }
+
+        if(Locator.Instance.gameController._examTime == false)
+        {
+            _dialogueUI.killTutorialUI();
         }
 
         if (_currentNode.examNext && (_currentNode._lines.Length == _currentLine))
@@ -41,24 +46,27 @@ public class DialogueAdvancer : MonoBehaviour
 
     public void BeginTutorial()
     {
-        _dialogueUI.showTutorialUI();
         _currentNode = _tutorialNode;
+        _dialogueUI._tutorialText.GetComponent<TextMeshProUGUI>().text = _currentNode._lines[0];
+        _dialogueUI.showTutorialUI();
+        _currentLine = 1;
     }
 
     public void AdvanceTutorial()
     {
-        if(_dialogueUI._tutorialPanel.activeSelf == true)
+        if (_currentNode._lines.Length >= _currentLine)
         {
-            if (_currentNode._lines.Length != _currentLine)
+            _dialogueUI.updateTutorialText(_currentNode._lines[_currentLine]);
+            _currentLine++;
+
+            if(_currentLine == _currentNode._lines.Length && _currentLine != 3)
             {
-                _dialogueUI.updateTutorialText(_currentNode._lines[_currentLine]);
-                _currentLine++;
-            }
-            else
-            {
+                Debug.Log("Death");
                 _dialogueUI.killTutorialUI();
             }
         }
+
+        // YEAHH WE DID IT!!!
 
     }
 

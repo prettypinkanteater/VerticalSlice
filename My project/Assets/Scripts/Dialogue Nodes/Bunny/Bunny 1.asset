@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcTalking: Bunny
   _lines:
-  - my mother sent me here because i 'hurt" her
+  - my mother sent me here because i 'hurt" her.
   - 'really, i just told her i didnt love her. '
   - i thought honesty was a good trait.
   - if anything, her affection digusts me.
-  - she treats me as if i am a doll, uncomfortable with my ever present "self"
-  - 'she simply cannot dress my "self" to follow her ideal gestures and throws a
-    tantrum, entreating me to be "kind" '
-  - im repulsed by the womb i come from, though i know this is abnormal
+  - she coos at me like i am a doll and wrinkles her nose at my raw expressions of
+    self.
+  - 'she throws a tantrum, entreating me to be "kind" and apologize for my actions. '
+  - im repulsed by the womb i come from.
   _nextNode:
   - {fileID: 11400000, guid: f3d9b24eba007454b9bc911a20a6e148, type: 2}
   examNext: 0

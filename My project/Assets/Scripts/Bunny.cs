@@ -26,13 +26,21 @@ public class Bunny : Patient
     // Update is called once per frame
     void Update()
     {
-        if(Locator.Instance.gameController._currentPatientObject == gameObject)
+        if (Locator.Instance.gameController._examTime == true)
         {
-            if (Locator.Instance.gameController._examTime == true && _turned == false)
+            if(_turned == true)
+            {
+                _attributeCanvas.SetActive(false);
+            }
+            else
             {
                 _attributeCanvas.SetActive(true);
             }
+   
+        }
 
+        if (Locator.Instance.gameController._currentPatientObject == gameObject)
+        {
             if (Input.GetKey(KeyCode.Space))
             {
                 _investigationDialogueUI.SetActive(false);
