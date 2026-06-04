@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using Microsoft.Unity.VisualStudio.Editor;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Nail : MonoBehaviour
 {
@@ -15,6 +18,9 @@ public class Nail : MonoBehaviour
     public bool _playing;
 
     public GameObject _attributeTouching;
+    [SerializeField] private Material _outlineMaterial;
+
+    public static bool queriesHitTriggers = false;
 
     private void Start()
     {
@@ -23,13 +29,16 @@ public class Nail : MonoBehaviour
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         _nailPlayableDirector.enabled = false;
         _nailAnimator.enabled = false;
+        //GetComponent<UnityEngine.UI.Image>().material = null;
     }
     private void Update()
     {
-         // how does the nail disable animator and shi
+         
     }
     public void DragHandler(BaseEventData data)
     {
+        GetComponent<UnityEngine.UI.Image>().material = null;
+        
         PointerEventData pointerData = (PointerEventData)data;
 
         Vector2 position;
@@ -37,6 +46,11 @@ public class Nail : MonoBehaviour
             (RectTransform)canvas.transform, pointerData.position, canvas.worldCamera, out position);
 
         transform.position = canvas.transform.TransformPoint(position);
+    }
+
+    public void OnMouseExit()
+    {
+        Debug.Log("HELPPPs");
     }
 
     public void BeginTimeline()
