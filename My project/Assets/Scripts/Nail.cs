@@ -67,4 +67,9 @@ public class Nail : MonoBehaviour
         gameObject.SetActive(false);
 
     }
+
+    public void playNailInsertSFX()
+    {
+        Locator.Instance._audioManager.playSound("Insert");
+    }
 }

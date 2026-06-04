@@ -13,6 +13,8 @@ public class Locator : MonoBehaviour
 
     public ExamStatsUI examStatsUI;
 
+    public AudioManager _audioManager { get; private set; }
+
     private void Awake()
     {
         if(Instance != null && Instance != this)
@@ -26,7 +28,7 @@ public class Locator : MonoBehaviour
         //examStatsUI = GameObject.Find("Canvas").GetComponentInChildren<ExamStatsUI>();
         dialogueAdvancer = GameObject.Find("DialogueController").GetComponent<DialogueAdvancer>();
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
-       
+        _audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
     void Start()
     {
