@@ -164,6 +164,7 @@ public class GameController : MonoBehaviour
         _currentNail.SetActive(true);
         nailScript._nailAnimator.enabled = false;
         nailScript._nailPlayableDirector.enabled = false;
+        _currentNail.GetComponent<RectTransform>().localPosition = new Vector3(-336f, -84f, 0);
     }
 
     public void killNail()

@@ -5,12 +5,13 @@ using Microsoft.Unity.VisualStudio.Editor;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Experimental.AI;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class Nail : MonoBehaviour
+public class Nail : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Canvas canvas;
     public PlayableDirector _nailPlayableDirector;
@@ -21,6 +22,8 @@ public class Nail : MonoBehaviour
     [SerializeField] private Material _outlineMaterial;
 
     public static bool queriesHitTriggers = false;
+
+    public bool dragging;
 
     private void Start()
     {
@@ -33,12 +36,19 @@ public class Nail : MonoBehaviour
     }
     private void Update()
     {
-         
+         if(dragging == true)
+        {
+            GetComponent<UnityEngine.UI.Image>().material = _outlineMaterial;
+        }
+        else
+        {
+            GetComponent<UnityEngine.UI.Image>().material = null;
+        }
     }
     public void DragHandler(BaseEventData data)
     {
-        GetComponent<UnityEngine.UI.Image>().material = null;
-        
+        GetComponent<UnityEngine.UI.Image>().material = _outlineMaterial;
+
         PointerEventData pointerData = (PointerEventData)data;
 
         Vector2 position;
@@ -46,15 +56,18 @@ public class Nail : MonoBehaviour
             (RectTransform)canvas.transform, pointerData.position, canvas.worldCamera, out position);
 
         transform.position = canvas.transform.TransformPoint(position);
+
+        dragging = true;
     }
 
-    public void OnMouseExit()
+    public void OnMouseEnter()
     {
         Debug.Log("HELPPPs");
     }
 
     public void BeginTimeline()
     {
+        dragging = false;
         _nailPlayableDirector.enabled = true;
         _nailAnimator.enabled = true;
         _nailPlayableDirector.Play();
@@ -85,5 +98,17 @@ public class Nail : MonoBehaviour
     public void playNailInsertSFX()
     {
         Locator.Instance._audioManager.playSound("Insert");
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log("mouse on");
+        dragging = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Debug.Log("mouse off");
+        dragging = false;
     }
 }
