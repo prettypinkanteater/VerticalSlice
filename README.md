@@ -70,6 +70,21 @@ The core gameplay loop in my game is contained in "shifts", each consisting of t
 The content implemented in my game makes up 2 shifts and I have a total of 3 patient NPCs. Each NPC has their unique identity and attributes, either actual anomalous ones or suspicious human ones. This equates to the playthrough of the gameplay loop 3 times.
 
 The original plan for my Vertical Slice was followed in terms of mechanics, significantly the body examinations and all its constituent mechanics, but I did add a little more content than planned for, another NPC, just because of milestone requirements. These implementations illustrate to the player what the final game will be like by giving them the experience of the core gameplay loop with a variety of patient characters to support their understanding of the environment.
+
+### 2.
+My rendering effect is activated when the mouse is hovered over the nail. This includes when it first makes contact with the nail and when the player drags it around. This is all done in the C# file called Nail. I used the OnPointerEnter() and OnPointerExit() Unity methods specifically. Firstly, I had to make the Nail class inherit from the IPointerEnterHandler and IPointerExitHandler interfaces in order to use the methods. As their names suggest, they are each called when the 
+pointer/cursor does what their respective name entails. In the same class, I declared the dragging boolean variable. In hindsight, the name could have been changed to be more accurate to the action it was tracking. Anyways, the bool is set to true in OnPointerEnter() and false in OnPointerExit. In the Update() method in the same class, there is an if statement with the condition of the value of dragging. If it is true, then the mouse is on it and the material should be the outline material. 
+If it is not, the mouse is not on it and the material should not be the outline material. In this case, I set it to null. Since the Update() method runs every frame, there is timely visual feedback when it comes to the mouse position in relativity to the nail.
+
+### 3.
+My process for breaking down a large project into specific systems is pretty much using the bubble diagram break-downs we used in all the GDIM 30 classes. The precursor foundation of this for me is specifying the mechanics I intend to implement so I can then work towards defining the details that support them, like the variables or methods. Having the visual/textual support of the diagram helps with retaining and/or referencing all the outlined specifics/details.
+
+As such, I will likely use the bubble diagrams in my planning process because I like their clear depiction of objects and their constituent parts, both behaviour/methods and information/variables, as well as the relationships between objects based on their parts. Big fan of the use of visual and text compositional hierarchy to illustrate this.
+
+Breaking down projects can help you see the scope of it because you're able to more accurately assess the workload/depth of tasks required and understand if completion is realistic or not. By depth, I mean the knowledge required in order to accomplish it. If a mechanic seems difficult to nail down the specifics about, it should signal a lack of knowledge, thus the need to gain that knowledge, and more time than available required to implement it.
+
+I think this was effective for the process of creating my Vertical Slice. I spent a lot of effort with detail designing the breakdown, the objects and constituents, so I ended up internalizing the specifics of what I needed to do relatively early on in my process. It made it less daunting to actually work on because nothing was vague or undefined. For example, I knew that the nails needed to be able to be dragged upon the player clicking and dragging so I focused on understanding how to sense the cursor's location/interaction with it. All in all, this solidifies my willingness to use this process/diagram again.
+
 ## Open-source assets
 - [Abandoned Hospital Assets](https://calv182.itch.io/abandoned-hospital-assetpack)
 - [A pile of rusty nails isolated on transparent background](https://stock.adobe.com/Library/urn:aaid:sc:VA6C2:8b1ac274-ebeb-4b5f-8173-ced036f1e8f8?asset_id=1780890752)
