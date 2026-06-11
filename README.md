@@ -63,11 +63,13 @@ I added a new shift containing 2 more patient NPCs, one of them being a human so
 #### Notes
 There is no more intended content after the two shifts, have not implemented disability of new shift button. Gary is potentially placeholder content for testing "human" patients, I feel maternal towards him and I would mourn his removal. But, we shall see.
 
-## Milestone 4 Devlog
-Milestone 4 Devlog goes here.
 ## Final Devlog
-Final Devlog goes here.
 
+### 1. (this is lowkey the same stuff i talked about in my extra cred lol, also im not "brief" because theres sub concepts to the main concepts)
+The core gameplay loop in my game is contained in "shifts", each consisting of the player greeting a/multiple patient(s) and administering an investigative body examination of them before finalizing their identification of the patient. At the end of each shift, the player's performance, based on the accuracy and/or quantity of their identifications and marked anomalous attribtutes, is assessed and their shift quality is communicated.
+The content implemented in my game makes up 2 shifts and I have a total of 3 patient NPCs. Each NPC has their unique identity and attributes, either actual anomalous ones or suspicious human ones. This equates to the playthrough of the gameplay loop 3 times.
+
+The original plan for my Vertical Slice was followed in terms of mechanics, significantly the body examinations and all its constituent mechanics, but I did add a little more content than planned for, another NPC, just because of milestone requirements. These implementations illustrate to the player what the final game will be like by giving them the experience of the core gameplay loop with a variety of patient characters to support their understanding of the environment.
 ## Open-source assets
 - [Abandoned Hospital Assets](https://calv182.itch.io/abandoned-hospital-assetpack)
 - [A pile of rusty nails isolated on transparent background](https://stock.adobe.com/Library/urn:aaid:sc:VA6C2:8b1ac274-ebeb-4b5f-8173-ced036f1e8f8?asset_id=1780890752)
